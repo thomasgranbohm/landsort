@@ -4,8 +4,8 @@
 
 ## Requirements
 
--   [] Blog-style like posts
--   [] News posts
--   [] Static sites
--   [] Metadata
--   [] Easy UI and navigation
+-   [ ] Blog-style like posts
+-   [ ] News posts
+-   [ ] Static sites
+-   [ ] Metadata
+-   [ ] Easy UI and navigation
