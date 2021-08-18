@@ -5,4 +5,18 @@
  * to customize this service
  */
 
-module.exports = {};
+module.exports = {
+	async find() {
+		const entries = await strapi.query('tab').find({}, ['articles']);
+		return entries.map((a) => {
+			const { articles } = a;
+			return {
+				...a,
+				articles: articles.map(({ title, slug }) => ({
+					title,
+					slug,
+				})),
+			};
+		});
+	},
+};

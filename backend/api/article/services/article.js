@@ -5,4 +5,9 @@
  * to customize this service
  */
 
-module.exports = {};
+module.exports = {
+	async findOne(params, populate) {
+		const { slug } = params;
+		return strapi.query('article').findOne({ slug }, populate);
+	},
+};
