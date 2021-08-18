@@ -1,0 +1,15 @@
+version: "3"
+services:
+  backend:
+    command: bash -c 'npm run dev'
+    env_file:
+      - ./.env
+    expose:
+      - "1337"
+    image: node:14
+    ports:
+      - "1337:1337"
+    user: node
+    volumes:
+      - ./backend:/home/node/app
+    working_dir: /home/node/app
