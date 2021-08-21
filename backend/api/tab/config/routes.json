@@ -1,52 +1,52 @@
 {
-  "routes": [
-    {
-      "method": "GET",
-      "path": "/tabs",
-      "handler": "tab.find",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/tabs/count",
-      "handler": "tab.count",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/tabs/:id",
-      "handler": "tab.findOne",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "POST",
-      "path": "/tabs",
-      "handler": "tab.create",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "PUT",
-      "path": "/tabs/:id",
-      "handler": "tab.update",
-      "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "DELETE",
-      "path": "/tabs/:id",
-      "handler": "tab.delete",
-      "config": {
-        "policies": []
-      }
-    }
-  ]
+	"routes": [
+		{
+			"method": "GET",
+			"path": "/tabs",
+			"handler": "tab.find",
+			"config": {
+				"policies": []
+			}
+		},
+		{
+			"method": "GET",
+			"path": "/tabs/count",
+			"handler": "tab.count",
+			"config": {
+				"policies": []
+			}
+		},
+		{
+			"method": "GET",
+			"path": "/tabs/:slug",
+			"handler": "tab.findOne",
+			"config": {
+				"policies": []
+			}
+		},
+		{
+			"method": "POST",
+			"path": "/tabs",
+			"handler": "tab.create",
+			"config": {
+				"policies": []
+			}
+		},
+		{
+			"method": "PUT",
+			"path": "/tabs/:slug",
+			"handler": "tab.update",
+			"config": {
+				"policies": []
+			}
+		},
+		{
+			"method": "DELETE",
+			"path": "/tabs/:slug",
+			"handler": "tab.delete",
+			"config": {
+				"policies": []
+			}
+		}
+	]
 }

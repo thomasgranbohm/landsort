@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import NavBar, { NavBarProps } from 'components/NavBar/NavBar';
+import Navigation, { NavigationProps } from 'components/Navigation/Navigation';
 
-type LayoutProps = NavBarProps;
+type LayoutProps = NavigationProps;
 
 const Layout: FC<LayoutProps> = ({ children, tabs }) => (
 	<main>
-		<NavBar tabs={tabs} />
+		<Navigation tabs={tabs} />
 		{children}
 	</main>
 );

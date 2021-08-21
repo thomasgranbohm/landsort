@@ -1,11 +1,11 @@
-import NavBar from '../components/NavBar/NavBar';
+import NavBar from '../components/Navigation/Navigation';
 import { fetchAPI, getGlobalData } from '../utils/api';
 
 const Home = ({ tabs }) => {
 	return (
 		<div>
-			<h1>Hello, World!</h1>
 			<NavBar tabs={tabs} />
+			<h1>Hello, World!</h1>
 		</div>
 	);
 };

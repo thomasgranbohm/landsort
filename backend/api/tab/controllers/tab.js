@@ -7,4 +7,9 @@ module.exports = {
 		const entry = await strapi.services.tab.find();
 		return sanitizeEntity(entry, { model: strapi.models.tab });
 	},
+	async findOne(context) {
+		const { slug } = context.params;
+		const entry = await strapi.services.tab.findOne({ slug });
+		return sanitizeEntity(entry, { model: strapi.models.tab });
+	},
 };

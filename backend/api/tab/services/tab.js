@@ -12,9 +12,10 @@ module.exports = {
 			const { articles } = a;
 			return {
 				...a,
-				articles: articles.map(({ title, slug }) => ({
+				articles: articles.map(({ title, slug, published_at }) => ({
 					title,
 					slug,
+					published_at,
 				})),
 			};
 		});

@@ -1,0 +1,22 @@
+@import './colors.scss';
+
+@mixin link-hover {
+	display: inline;
+	text-decoration: none;
+	background-image: linear-gradient($foreground, $foreground),
+		linear-gradient($background, $background);
+	background-repeat: no-repeat;
+
+	background-position-y: 90%, 0;
+	background-position-x: 100%, 0;
+	background-size: 0% 2px, 100% 100%;
+	transition: background-size 0.2s;
+
+	transition-timing-function: ease;
+
+	&:hover,
+	&:focus {
+		background-position-x: 0%, 0;
+		background-size: 100% 2px, 100% 100%;
+	}
+}

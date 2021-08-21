@@ -28,6 +28,34 @@ export async function fetchAPI(path: string, options = {}) {
 	return data;
 }
 
+export function getStrapiMedia(url) {
+	if (url == null) {
+		return null;
+	}
+
+	// Return the full URL if the media is hosted on an external provider
+	if (url.startsWith('http') || url.startsWith('//')) {
+		return url;
+	}
+
+	// Otherwise prepend the URL path with the Strapi URL
+	return `${
+		process.env.NEXT_PUBLIC_STRAPI_API_URL || 'http://localhost:1337'
+	}${url}`;
+}
+
+const generateTabs = async () => {
+	const tabs = await fetchAPI(`/tabs`);
+
+	return tabs;
+};
+
+export async function getTab(slug: string) {
+	const tab = await fetchAPI(`/tabs/${slug}`);
+
+	return tab;
+}
+
 export async function getPage(slug: string) {
 	const page = await fetchAPI(`/articles/${slug}`);
 
@@ -45,6 +73,7 @@ export async function getHomePage() {
 }
 
 export async function getGlobalData() {
-	const [tabs] = await Promise.all([fetchAPI(`/tabs`)]);
+	const tabs = await generateTabs();
+
 	return { tabs };
 }
