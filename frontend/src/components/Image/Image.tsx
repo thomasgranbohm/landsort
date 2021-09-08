@@ -6,7 +6,8 @@ import { concat } from '../../utils/functions';
 import classes from './Image.module.scss';
 
 type ImageProps = {
-	type: 'headshot' | 'thumbnail';
+	type?: 'headshot' | 'thumbnail';
+	style?: 'straight' | 'rounded';
 	className?: string;
 } & Pick<Headshot, 'url' | 'name' | 'alternativeText'>;
 const Image = ({
@@ -15,13 +16,18 @@ const Image = ({
 	url,
 	className,
 	type,
+	style,
 	...rest
 }: ImageProps) => {
 	// TODO: implement sizes.
 	return (
 		<img
-			{...rest}
-			className={concat(classes['container'], className, classes[type])}
+			className={concat(
+				classes['container'],
+				classes[type],
+				classes[style],
+				className
+			)}
 			src={getStrapiMedia(url)}
 			alt={alternativeText || name}
 		/>

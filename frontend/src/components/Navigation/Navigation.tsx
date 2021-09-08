@@ -19,9 +19,12 @@ const Navigation = ({ tabs }: NavigationProps) => (
 					{articles && (
 						<ul className={classes['links']}>
 							{articles.map((a, i) => (
-								<li key={`article-${i}`}>
-									<a href={`/${slug}/${a.slug}`}>{a.title}</a>
-								</li>
+								<a
+									href={`/${slug}/${a.slug}`}
+									key={`article-${i}`}
+								>
+									<li>{a.title}</li>
+								</a>
 							))}
 						</ul>
 					)}

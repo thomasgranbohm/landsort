@@ -1,7 +1,24 @@
 version: "3"
 services:
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_DATABASE: strapi
+      MONGO_INITDB_ROOT_USERNAME: strapi
+      MONGO_INITDB_ROOT_PASSWORD: strapi
+    volumes:
+      - ./database:/data/db
   backend:
     command: bash -c 'npm run dev || (npm install && npm run dev)'
+    depends_on:
+      - mongo
+    environment:
+      DATABASE_CLIENT: mongo
+      DATABASE_NAME: strapi
+      DATABASE_HOST: mongo
+      DATABASE_PORT: 27017
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
     env_file:
       - ./.env
     expose:

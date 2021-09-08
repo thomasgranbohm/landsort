@@ -64,12 +64,8 @@ export async function getPage(slug: string) {
 
 export async function getHomePage() {
 	const homepage = await fetchAPI(`/home-page`);
-	const global = await getGlobalData();
 
-	return {
-		page: homepage,
-		global,
-	};
+	return homepage;
 }
 
 export async function getGlobalData() {

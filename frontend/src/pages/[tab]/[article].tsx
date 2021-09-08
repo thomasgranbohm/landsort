@@ -44,15 +44,12 @@ const Article = ({ page, global }) => {
 				</Column>
 			)}
 			<Column size="small">
-				<h1>{title}</h1>
-			</Column>
-			<Column size="small">
 				{published_at && (
-					<p>
-						<b>Publicerad: </b>
+					<time dateTime={published_at}>
 						{new Date(published_at).toLocaleDateString('sv')}
-					</p>
+					</time>
 				)}
+				<h1>{title}</h1>
 			</Column>
 			<Markdown
 				components={{

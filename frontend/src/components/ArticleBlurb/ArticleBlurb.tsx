@@ -16,7 +16,11 @@ const ArticleBlurb = ({
 		<a href={slug} className={classes['outer']}>
 			<Column size="large">
 				<div className={classes['container']}>
-					<CustomImage {...headshot} type="thumbnail" />
+					<CustomImage
+						{...headshot}
+						style="rounded"
+						type="thumbnail"
+					/>
 					<div className={classes['rest']}>
 						<h2 className={classes['title']}>{title}</h2>
 						<time className={classes['time']}>

@@ -18,10 +18,6 @@
     "slug": {
       "type": "uid"
     },
-    "tab": {
-      "model": "tab",
-      "via": "articles"
-    },
     "content": {
       "type": "richtext"
     },
@@ -36,6 +32,10 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "tab": {
+      "model": "tab",
+      "via": "articles"
     }
   }
 }

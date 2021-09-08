@@ -8,6 +8,8 @@
 module.exports = {
 	async findOne(params, populate) {
 		const { slug } = params;
-		return strapi.query('article').findOne({ slug }, populate);
+		return strapi
+			.query('article')
+			.findOne({ slug }, ['tab', 'tab.id', 'tab.slug']);
 	},
 };
