@@ -4,15 +4,15 @@ import { ReactNode } from 'react';
 import classes from './Image.module.scss';
 
 interface ImageProps extends NextImageProps {
-	source?: string | ReactNode;
+	credit?: string | ReactNode;
 }
 
-const Image = ({ source, ...props }: ImageProps) => {
+const Image = ({ credit, ...props }: ImageProps) => {
 	return (
 		<Column className={classes['container']} size="large">
 			<NextImage {...props} />
-			{source && (
-				<figcaption className={classes['source']}>{source}</figcaption>
+			{credit && (
+				<figcaption className={classes['credit']}>{credit}</figcaption>
 			)}
 		</Column>
 	);

@@ -13,9 +13,10 @@ const Home = ({}) => {
 			<Row>
 				<Image
 					src={'https://landsort-birds.se/images/Fyren.jpg'}
+					alt="Fyren på Landsort"
 					width={3838}
 					height={2158}
-					source="Thomas Granbohm, YomTube ©"
+					credit="Thomas Granbohm, YomTube ©"
 				/>
 			</Row>
 			<Row>
