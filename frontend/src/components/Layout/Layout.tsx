@@ -1,13 +1,20 @@
+import Anchor from 'components/Anchor/Anchor';
+import Heading from 'components/Heading/Heading';
 import { FC } from 'react';
-import Navigation, { NavigationProps } from 'components/Navigation/Navigation';
+import classes from './Layout.module.scss';
 
-type LayoutProps = NavigationProps;
-
-const Layout: FC<LayoutProps> = ({ children, tabs }) => (
-	<main>
-		<Navigation tabs={tabs} />
-		{children}
-	</main>
+const Layout: FC = ({ children }) => (
+	<div className={classes['container']}>
+		<header>
+			<Heading type="h1">Landsort Fågelstation</Heading>
+		</header>
+		<main>{children}</main>
+		<footer>
+			<Anchor href="https://github.com/thomasgranbohm/landsort">
+				Source code
+			</Anchor>
+		</footer>
+	</div>
 );
 
 export default Layout;

@@ -1,0 +1,17 @@
+.container {
+	background: rgba(224, 224, 224);
+	border-left: 6px rgba(196, 196, 196) solid;
+
+	margin: 1rem auto;
+	padding: 1rem;
+
+	.author {
+		margin-top: 0.5em;
+		&::before {
+			display: inline-block;
+			content: '–';
+
+			margin-right: 0.25em;
+		}
+	}
+}

@@ -1,43 +1,33 @@
 {
-  "name": "landsort-backend",
-  "private": true,
-  "version": "0.1.0",
-  "description": "Backend for Landsort",
-  "scripts": {
-    "dev": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi"
-  },
-  "devDependencies": {},
-  "dependencies": {
-    "knex": "0.21.18",
-    "slugify": "^1.6.0",
-    "sqlite3": "5.0.0",
-    "strapi": "3.6.6",
-    "strapi-admin": "3.6.6",
-    "strapi-connector-bookshelf": "3.6.6",
-    "strapi-connector-mongoose": "^3.6.7",
-    "strapi-plugin-content-manager": "3.6.6",
-    "strapi-plugin-content-type-builder": "3.6.6",
-    "strapi-plugin-email": "3.6.6",
-    "strapi-plugin-graphql": "3.6.6",
-    "strapi-plugin-i18n": "3.6.6",
-    "strapi-plugin-upload": "3.6.6",
-    "strapi-plugin-users-permissions": "3.6.6",
-    "strapi-utils": "3.6.6"
-  },
-  "author": {
-    "name": "Thomas Granbohm",
-    "email": "thomas.granbohm@gmail.com",
-    "url": "https://granbohm.dev"
-  },
-  "strapi": {
-    "uuid": "53568770-9172-4045-9109-08537af69ea8"
-  },
-  "engines": {
-    "node": ">=10.16.0 <=14.x.x",
-    "npm": "^6.0.0"
-  },
-  "license": "MIT"
+	"name": "landsort-backend",
+	"private": true,
+	"version": "0.1.0",
+	"scripts": {
+		"dev": "strapi develop",
+		"start": "strapi start",
+		"build": "strapi build",
+		"strapi": "strapi"
+	},
+	"devDependencies": {},
+	"dependencies": {
+		"@strapi/plugin-graphql": "4.0.3",
+		"@strapi/plugin-i18n": "4.0.3",
+		"@strapi/plugin-users-permissions": "4.0.3",
+		"@strapi/strapi": "4.0.3",
+		"sharp": "^0.29.3",
+		"sqlite3": "5.0.2"
+	},
+	"author": {
+		"name": "Thomas Granbohm",
+		"email": "thomas.granbohm@gmail.com",
+		"url": "https://granbohm.dev"
+	},
+	"strapi": {
+		"uuid": "2dfe1c08-76e6-4751-8dfc-d6aaf767f28c"
+	},
+	"engines": {
+		"node": ">=12.x.x <=16.x.x",
+		"npm": ">=6.0.0"
+	},
+	"license": "MIT"
 }

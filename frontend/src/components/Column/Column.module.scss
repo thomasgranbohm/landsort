@@ -1,13 +1,16 @@
 .container {
-	margin: 2rem auto;
-	position: relative;
-	&.large {
-		width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+
+	width: 100%;
+
+	&.small {
+		max-width: 56ch;
 	}
 	&.medium {
-		width: 90%;
+		max-width: 70ch;
 	}
-	&.small {
-		width: 80%;
+	&.large {
+		max-width: 100%;
 	}
 }

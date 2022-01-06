@@ -1,0 +1,13 @@
+@import 'styles/includes';
+
+.container {
+	margin: 0 auto;
+	padding: 0 $gutter;
+	width: 100%;
+	max-width: calc(#{$page-width} + 2rem);
+
+	footer {
+		margin: 2rem 0;
+		text-align: center;
+	}
+}

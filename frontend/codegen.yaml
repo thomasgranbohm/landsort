@@ -1,0 +1,7 @@
+overwrite: true
+schema: 'http://backend:1337/graphql'
+documents: './src/queries/**/*.graphql'
+generates:
+  src/graphql.ts:
+    plugins:
+      - typescript

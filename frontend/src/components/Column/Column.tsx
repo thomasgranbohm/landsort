@@ -1,13 +1,21 @@
-import { FC } from 'react';
-import { concat } from '../../utils/functions';
+import clsx from 'clsx';
+import { FC, HTMLAttributes } from 'react';
 import classes from './Column.module.scss';
 
-export type ColumnProps = {
-	size: 'large' | 'medium' | 'small';
-};
+interface ColumnProps extends HTMLAttributes<HTMLElement> {
+	size?: 'large' | 'medium' | 'small';
+}
 
-const Column: FC<ColumnProps> = ({ children, size }) => (
-	<div className={concat(classes['container'], classes[size])}>
+const Column: FC<ColumnProps> = ({
+	children,
+	className,
+	size = 'medium',
+	...props
+}) => (
+	<div
+		className={clsx(classes['container'], classes[size], className)}
+		{...props}
+	>
 		{children}
 	</div>
 );
