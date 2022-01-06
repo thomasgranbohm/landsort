@@ -8,7 +8,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 		<>
 			<DefaultSeo
 				defaultTitle="Landsort Fågelstation"
-				title="Landsort Fågelstation"
 				titleTemplate="%s - Landsort Fågelstation"
 			/>
 			<Layout>
