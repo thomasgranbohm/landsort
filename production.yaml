@@ -1,6 +1,9 @@
 version: '3'
 services:
   backend:
+    build:
+      context: .
+      dockerfile: ./config/node-with-libvips
     command: bash -c 'npm run build && npm run start'
     environment:
       - NODE_ENV=production
@@ -15,6 +18,9 @@ services:
       - ./config/backend.env:/home/node/app/.env
     working_dir: /home/node/app
   frontend:
+    build:
+      context: .
+      dockerfile: ./config/node-with-libvips
     command: bash -c '/test-endpoint.sh backend 1337 && npm run build && npm run start'
     depends_on:
       - backend
@@ -22,7 +28,6 @@ services:
       - NODE_ENV=production
     expose:
       - '3000'
-    image: node:14
     ports:
       - '3000:3000'
     user: node
