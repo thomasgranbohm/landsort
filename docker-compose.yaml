@@ -13,9 +13,9 @@ services:
       - ./config/backend.env:/home/node/app/.env
     working_dir: /home/node/app
   frontend:
+    command: bash -c 'npm run dev'
     depends_on:
       - backend
-    command: bash -c 'npm run dev'
     expose:
       - '3000'
     image: node:14
