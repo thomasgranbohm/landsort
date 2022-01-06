@@ -9,36 +9,34 @@ services:
       - NODE_ENV=production
     expose:
       - '1337'
-    image: node:14
     ports:
       - '1337:1337'
-    user: node
+    user: landsort
     volumes:
-      - ./backend:/home/node/app
-      - ./config/backend.env:/home/node/app/.env
-    working_dir: /home/node/app
+      - ./backend:/home/landsort/app
+      - ./config/backend.env:/home/landsort/app/.env
+    working_dir: /home/landsort/app
   frontend:
     build:
       context: .
       dockerfile: ./config/node-with-libvips
     command: bash -c '/test-endpoint.sh backend 1337 && npm run build && npm run start'
-    depends_on:
-      - backend
     environment:
       - NODE_ENV=production
     expose:
       - '3000'
     ports:
       - '3000:3000'
-    user: node
+    user: landsort
     volumes:
-      - ./frontend:/home/node/app
-      - ./config/frontend.env:/home/node/app/.env
+      - ./frontend:/home/landsort/app
+      - ./config/frontend.env:/home/landsort/app/.env
       - ./scripts/test-endpoint.sh:/test-endpoint.sh
-    working_dir: /home/node/app
+    working_dir: /home/landsort/app
   nginx:
     command: bash -c '/test-endpoint.sh backend 1337 && echo "Starting NGiNX..." && nginx -g "daemon off;"'
     depends_on:
+      - backend
       - frontend
     image: nginx
     ports:
