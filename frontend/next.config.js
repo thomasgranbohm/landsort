@@ -2,6 +2,15 @@
 module.exports = {
 	reactStrictMode: true,
 	images: {
-		domains: ['landsort-birds.se'],
+		domains: ['backend'],
+	},
+	webpack: (config, options) => {
+		config.module.rules.push({
+			test: /\.(graphql|gql)$/,
+			exclude: /node_modules/,
+			use: [{ loader: 'graphql-tag/loader' }],
+		});
+
+		return config;
 	},
 };

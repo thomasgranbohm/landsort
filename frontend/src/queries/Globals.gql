@@ -1,0 +1,32 @@
+#import "./fragments/Media.gql";
+
+query Global {
+	global {
+		data {
+			attributes {
+				title
+				title_prefix
+				logo {
+					...MediaFragment
+				}
+				favicon {
+					...MediaFragment
+				}
+			}
+		}
+	}
+}
+
+fragment MediaFragment on UploadFileEntityResponse {
+	data {
+		attributes {
+			name
+			alternativeText
+			caption
+			width
+			height
+			url
+			formats
+		}
+	}
+}

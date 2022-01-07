@@ -1,5 +1,7 @@
-import Column from 'components/Column/Column';
 import { FC } from 'react';
+
+import Column from 'components/Column/Column';
+
 import classes from './List.module.scss';
 
 interface ListProps {

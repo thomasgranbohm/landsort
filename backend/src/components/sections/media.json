@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_sections_media",
+  "info": {
+    "displayName": "media",
+    "icon": "image",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "credit": {
+      "type": "string"
+    }
+  }
+}

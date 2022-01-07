@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_quotes",
+  "info": {
+    "displayName": "quote",
+    "icon": "audio-description"
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "source": {
+      "type": "string"
+    }
+  }
+}

@@ -1,7 +1,27 @@
 overwrite: true
-schema: 'http://backend:1337/graphql'
-documents: './src/queries/**/*.graphql'
+schema: 'http://localhost:1337/graphql'
+documents: './src/queries/**/*.gql'
 generates:
-  src/graphql.ts:
+  # src/generated/types.tsx:
+  #   documents: './src/queries/**/*.gql'
+  #   plugins:
+  #     - 'typescript'
+  #     - 'typescript-operations'
+  #     - 'typescript-react-apollo'
+  src/generated/fragments.ts:
+    documents: './src/queries/fragments/*.gql'
     plugins:
-      - typescript
+      - 'fragment-matcher'
+  src/generated/queries.tsx:
+    documents: './src/queries/*.gql'
+    config:
+      documentMode: external
+      importDocumentNodeExternallyFrom: ./types
+      withHOC: false
+      withHooks: true
+      reactApolloVersion: 3
+    preset: import-types
+    presetConfig:
+      typesPath: ./types
+    plugins:
+      - graphql-codegen-apollo-next-ssr

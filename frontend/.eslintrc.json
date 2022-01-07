@@ -1,3 +1,53 @@
 {
-  "extends": "next/core-web-vitals"
+	"extends": "next/core-web-vitals",
+	"plugins": ["jsx-a11y", "import"],
+	"rules": {
+		"jsx-a11y/alt-text": "off",
+
+		"import/order": [
+			"error",
+			{
+				"groups": [
+					"builtin",
+					"external",
+					["sibling", "parent"],
+					"index",
+					"object"
+				],
+				"newlines-between": "always",
+				"alphabetize": {
+					"order": "asc",
+					"caseInsensitive": true
+				},
+				"pathGroups": [
+					{
+						"pattern": "components/**",
+						"group": "external",
+						"position": "after"
+					},
+					{
+						"pattern": "pages/**",
+						"group": "external",
+						"position": "after"
+					},
+					{
+						"pattern": "queries/**",
+						"group": "external",
+						"position": "after"
+					},
+					{
+						"pattern": "styles/**",
+						"group": "external",
+						"position": "after"
+					},
+					{
+						"pattern": "utils/**",
+						"group": "external",
+						"position": "after"
+					}
+				],
+				"pathGroupsExcludedImportTypes": ["builtin"]
+			}
+		]
+	}
 }

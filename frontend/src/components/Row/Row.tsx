@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import classes from './Row.module.scss';
 
 const Row: FC = ({ children }) => (

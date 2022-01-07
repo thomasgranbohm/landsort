@@ -1,6 +1,8 @@
 import clsx from 'clsx';
-import Column from 'components/Column/Column';
 import { FC } from 'react';
+
+import Column from 'components/Column/Column';
+
 import classes from './Heading.module.scss';
 
 interface HeadingProps {

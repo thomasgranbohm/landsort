@@ -1,9 +1,0 @@
-query {
-	uploadFiles {
-		data {
-			attributes {
-				formats
-			}
-		}
-	}
-}

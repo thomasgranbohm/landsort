@@ -2,6 +2,7 @@ version: '3'
 services:
   backend:
     command: bash -c 'npm run dev || (npm install && npm run dev)'
+    env_file: ./config/backend.env
     expose:
       - '1337'
     image: node:14
@@ -10,12 +11,12 @@ services:
     user: node
     volumes:
       - ./backend:/home/node/app
-      - ./config/backend.env:/home/node/app/.env
     working_dir: /home/node/app
   frontend:
     command: bash -c 'npm run dev'
     depends_on:
       - backend
+    env_file: ./config/frontend.env
     expose:
       - '3000'
     image: node:14
@@ -24,5 +25,4 @@ services:
     user: node
     volumes:
       - ./frontend:/home/node/app
-      - ./config/frontend.env:/home/node/app/.env
     working_dir: /home/node/app

@@ -1,0 +1,33 @@
+#import "./fragments/Media.gql"
+#import "./fragments/Global.gql"
+
+query {
+	page(id: 1) {
+		data {
+			attributes {
+				title
+				slug
+				sections {
+					__typename
+					... on ComponentSectionsMedia {
+						media {
+							...MediaFragment
+						}
+						credit
+					}
+					... on ComponentSectionsQuote {
+						content
+						source
+					}
+					... on ComponentSectionsWysiwyg {
+						content
+					}
+				}
+			}
+		}
+	}
+
+	global {
+		...GlobalFragment
+	}
+}

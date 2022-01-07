@@ -1,5 +1,7 @@
-import Column from 'components/Column/Column';
 import { FC, ReactNode } from 'react';
+
+import Column from 'components/Column/Column';
+
 import classes from './Quote.module.scss';
 
 interface QuoteProps {

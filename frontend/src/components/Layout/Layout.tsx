@@ -1,12 +1,18 @@
+import { FC } from 'react';
+
 import Anchor from 'components/Anchor/Anchor';
 import Heading from 'components/Heading/Heading';
-import { FC } from 'react';
+
 import classes from './Layout.module.scss';
 
-const Layout: FC = ({ children }) => (
+interface LayoutProps {
+	title?: string;
+}
+
+const Layout: FC<LayoutProps> = ({ children, title }) => (
 	<div className={classes['container']}>
 		<header>
-			<Heading type="h1">Landsort Fågelstation</Heading>
+			<Heading type="h1">{title || 'Landsort Fågelstation'}</Heading>
 		</header>
 		<main>{children}</main>
 		<footer>

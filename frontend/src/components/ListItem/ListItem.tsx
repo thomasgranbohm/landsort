@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import classes from './ListItem.module.scss';
 
 interface ListItemProps {}

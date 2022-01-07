@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { FC, HTMLAttributes } from 'react';
+
 import classes from './Column.module.scss';
 
 interface ColumnProps extends HTMLAttributes<HTMLElement> {

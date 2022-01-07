@@ -1,113 +1,39 @@
 import Anchor from 'components/Anchor/Anchor';
 import Heading from 'components/Heading/Heading';
 import Image from 'components/Image/Image';
+import Layout from 'components/Layout/Layout';
 import List from 'components/List/List';
 import ListItem from 'components/ListItem/ListItem';
 import Paragraph from 'components/Paragraph/Paragraph';
 import Quote from 'components/Quote/Quote';
 import Row from 'components/Row/Row';
+import SectionRenderer from 'components/SectionRenderer/SectionRenderer';
+import { GetStaticProps } from 'next';
+import StartPageQuery from 'queries/Startpage.gql';
+import { queryGraphQL } from 'utils/api';
+import { normalize } from 'utils/functions';
+import { Fragments, Queries } from 'utils/types';
 
-const Home = ({}) => {
+export const getStaticProps: GetStaticProps = async () => {
+	const { data, errors } = await queryGraphQL<Queries.Page>(StartPageQuery);
+
+	if (!!errors && errors.length > 0) {
+		throw errors;
+	}
+
+	return {
+		props: data,
+		revalidate: 60,
+	};
+};
+
+const Home = ({ page }: Queries.Page) => {
+	const { sections, slug, title } = normalize<Fragments.Page>(page);
+
 	return (
-		<>
-			<Row>
-				<Image
-					src={'https://landsort-birds.se/images/Fyren.jpg'}
-					alt="Fyren på Landsort"
-					width={3838}
-					height={2158}
-					credit="Thomas Granbohm, YomTube ©"
-				/>
-			</Row>
-			<Row>
-				<Paragraph>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Earum ipsam architecto, obcaecati id accusantium, ea
-					voluptatum consectetur facere voluptatibus reiciendis eum
-					quae animi adipisci molestias? Numquam minima pariatur quasi
-					esse?
-				</Paragraph>
-			</Row>
-			<Row>
-				<Heading type="h2">Unordered list</Heading>
-				<List type="ul">
-					<ListItem>Item</ListItem>
-					<ListItem>Item</ListItem>
-					<ListItem>Item</ListItem>
-					<ListItem>Item</ListItem>
-				</List>
-			</Row>
-			<Row>
-				<Paragraph>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Earum ipsam architecto, obcaecati id accusantium, ea
-					voluptatum consectetur facere voluptatibus reiciendis eum
-					quae animi adipisci molestias? Numquam minima pariatur quasi
-					esse?
-				</Paragraph>
-			</Row>
-			<Row>
-				<Heading type="h2">Ordered list</Heading>
-				<List type="ol">
-					<ListItem>Item</ListItem>
-					<ListItem>Item</ListItem>
-					<ListItem>Item</ListItem>
-					<ListItem>Item</ListItem>
-				</List>
-			</Row>
-			<Row>
-				<Paragraph>
-					<i>Lorem ipsum dolor</i> sit amet, consectetur adipisicing
-					elit. Earum ipsam architecto, obcaecati id accusantium, ea
-					voluptatum <b>consectetur facere voluptatibus</b> reiciendis
-					eum quae animi adipisci molestias? Numquam minima pariatur
-					quasi esse?
-				</Paragraph>
-			</Row>
-			<Row>
-				<Quote author="Thomas Granbohm, 2022">
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Illum accusamus dolorum aliquid obcaecati facere asperiores
-					necessitatibus accusantium perferendis officia.{' '}
-					<i>Quas liberoad</i> velit aspernatur nostrum totam maiores,
-					amet vitae doloremque!
-				</Quote>
-			</Row>
-
-			<Row>
-				<Paragraph>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Earum ipsam architecto, obcaecati id accusantium, ea
-					voluptatum consectetur facere voluptatibus reiciendis eum
-					quae animi adipisci molestias? Numquam minima pariatur quasi
-					esse?
-				</Paragraph>
-			</Row>
-			<Row>
-				<Quote
-					author={
-						<Anchor href="https://granbohm.dev">
-							Quote with a link
-						</Anchor>
-					}
-				>
-					Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-					Illum accusamus dolorum aliquid obcaecati facere asperiores
-					necessitatibus accusantium perferendis officia. Quas libero
-					ad velit aspernatur nostrum totam maiores, amet vitae
-					doloremque!
-				</Quote>
-			</Row>
-			<Row>
-				<Paragraph>
-					Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-					Earum ipsam architecto, obcaecati id accusantium, ea
-					voluptatum consectetur facere voluptatibus reiciendis eum
-					quae animi adipisci molestias? Numquam minima pariatur quasi
-					esse?
-				</Paragraph>
-			</Row>
-		</>
+		<Layout title={title}>
+			<SectionRenderer sections={sections} />
+		</Layout>
 	);
 };
 
