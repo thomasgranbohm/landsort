@@ -1,0 +1,14 @@
+#import "./MenuItems.gql"
+
+fragment HeaderFragment on HeaderEntityResponse {
+	data {
+		attributes {
+			menus {
+				title
+				pages {
+					...MenuItemsFragment
+				}
+			}
+		}
+	}
+}

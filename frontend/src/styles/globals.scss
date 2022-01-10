@@ -13,13 +13,16 @@
 	--foreground: #{$black};
 	--background: #{$white};
 	--link: #{$blue};
+	--signature: #{$orange};
 }
 
+:root,
 html,
 body {
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
 		Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
 		sans-serif;
+	font-size: 16px;
 }
 
 section {

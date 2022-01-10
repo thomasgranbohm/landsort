@@ -1,15 +1,10 @@
-import Anchor from 'components/Anchor/Anchor';
-import Heading from 'components/Heading/Heading';
-import Image from 'components/Image/Image';
-import Layout from 'components/Layout/Layout';
-import List from 'components/List/List';
-import ListItem from 'components/ListItem/ListItem';
-import Paragraph from 'components/Paragraph/Paragraph';
-import Quote from 'components/Quote/Quote';
-import Row from 'components/Row/Row';
-import SectionRenderer from 'components/SectionRenderer/SectionRenderer';
 import { GetStaticProps } from 'next';
+
+import Layout from 'components/Layout/Layout';
+import SectionRenderer from 'components/SectionRenderer/SectionRenderer';
+
 import StartPageQuery from 'queries/Startpage.gql';
+
 import { queryGraphQL } from 'utils/api';
 import { normalize } from 'utils/functions';
 import { Fragments, Queries } from 'utils/types';
@@ -27,11 +22,15 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
-const Home = ({ page }: Queries.Page) => {
-	const { sections, slug, title } = normalize<Fragments.Page>(page);
+const Home = ({ global, header, page }: Queries.Page) => {
+	const { sections, title } = normalize<Fragments.Page>(page);
 
 	return (
-		<Layout title={title}>
+		<Layout
+			global={normalize(global)}
+			header={normalize(header)}
+			title={title}
+		>
 			<SectionRenderer sections={sections} />
 		</Layout>
 	);

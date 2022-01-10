@@ -1,7 +1,27 @@
+@import 'styles/includes';
+
 .container {
 	color: #006eff;
+	text-decoration: none;
+
+	&:hover,
+	&:focus {
+		text-decoration: underline;
+	}
 
 	&:visited {
 		color: #8400ff;
+	}
+
+	&.clean {
+		color: unset;
+
+		&:visited {
+			color: $foreground;
+		}
+
+		&:target {
+			background: blue;
+		}
 	}
 }

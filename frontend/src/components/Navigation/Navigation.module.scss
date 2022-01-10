@@ -1,0 +1,165 @@
+@import 'styles/includes';
+
+.container {
+	position: sticky;
+	top: 0;
+
+	z-index: 100;
+
+	width: 100%;
+
+	display: grid;
+	grid-template-areas: 'logo hamburger';
+	grid-template-columns: repeat(2, 1fr);
+
+	grid-template-rows: var(--height);
+
+	background-color: white;
+
+	--height: 6rem;
+	height: var(--height);
+
+	.logo-container {
+		grid-area: logo;
+		height: var(--height);
+
+		.logo {
+			justify-self: start;
+			align-self: center;
+			height: var(--height);
+		}
+	}
+
+	.menu {
+		grid-area: menu;
+		display: none;
+		width: 100%;
+
+		padding-top: 12rem;
+
+		list-style: none;
+
+		.item {
+			height: 3rem;
+			line-height: 3rem;
+
+			.title {
+				display: block;
+				height: 100%;
+				line-height: 3rem;
+				cursor: pointer;
+
+				.icon {
+					width: 3rem;
+					height: 3rem;
+
+					text-align: center;
+				}
+			}
+
+			.sub-menu {
+				display: none;
+				list-style: none;
+
+				.item {
+					padding-left: 1rem;
+
+					font-weight: initial;
+				}
+			}
+
+			&:focus-within,
+			&:hover {
+				.sub-menu {
+					display: block;
+				}
+			}
+		}
+
+		> .item {
+			> .title {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			&:focus-within .title .icon,
+			&:hover .title .icon {
+				transform: rotate(90deg);
+			}
+		}
+	}
+
+	.hamburger {
+		grid-area: hamburger;
+		justify-self: end;
+		align-self: center;
+	}
+
+	&.open {
+		grid-template-areas: 'logo hamburger' 'menu menu';
+		grid-template-rows: var(--height) 1fr;
+
+		min-height: 100vh;
+
+		.menu {
+			display: block;
+		}
+	}
+
+	@include breakpoint-large {
+		--height: 3rem;
+		display: block;
+
+		.hamburger,
+		.logo {
+			display: none;
+		}
+
+		.menu {
+			display: block;
+			height: var(--height);
+			line-height: var(--height);
+			padding-top: 0;
+
+			.item {
+				display: inline-block;
+				.title {
+					display: block;
+					padding: 0 1rem;
+					.icon {
+						display: none;
+					}
+				}
+
+				.sub-menu {
+					position: absolute;
+					top: 100%;
+					.item {
+						display: block;
+						background-color: var(--background);
+						padding-left: unset;
+
+						.title {
+							display: inline-block;
+							width: 100%;
+							&:focus-within,
+							&:hover {
+								background: rgb(196, 196, 196);
+							}
+						}
+					}
+				}
+			}
+
+			> .item {
+				&:focus-within,
+				&:hover {
+					> .title {
+						@include apply-signature;
+					}
+				}
+			}
+		}
+	}
+}

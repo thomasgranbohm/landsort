@@ -5,11 +5,15 @@ export interface Format {
 }
 
 export namespace Strapi {
-	export interface V4Wrapper<T> {
-		data: {
-			attributes: T;
-		};
-	}
+	export type V4Wrapper<T> = T extends Array<infer E>
+		? {
+				data: Array<{ attributes: E }>;
+		  }
+		: {
+				data: {
+					attributes: T;
+				};
+		  };
 	export type Cleaned<T extends { __typename: string }> = Omit<
 		T,
 		'__typename'
@@ -28,7 +32,13 @@ export namespace Fragments {
 		favicon: Strapi.V4Wrapper<Fragments.Media>;
 		logo: Strapi.V4Wrapper<Fragments.Media>;
 	}
-
+	export interface Header {
+		menus: Array<{
+			title: string;
+			pages: Strapi.V4Wrapper<Array<Fragments.MenuItem>>;
+		}>;
+	}
+	export type MenuItem = Pick<Fragments.Page, 'title' | 'slug'>;
 	export interface Page {
 		title: string;
 		slug: string;
@@ -70,5 +80,6 @@ export namespace Queries {
 
 	export interface Base {
 		global: Strapi.V4Wrapper<Fragments.Global>;
+		header: Strapi.V4Wrapper<Fragments.Header>;
 	}
 }

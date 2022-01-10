@@ -1,5 +1,8 @@
 #import "./fragments/Media.gql"
+
+# Globals
 #import "./fragments/Global.gql"
+#import "./fragments/Header.gql"
 
 query {
 	page(id: 1) {
@@ -29,5 +32,8 @@ query {
 
 	global {
 		...GlobalFragment
+	}
+	header {
+		...HeaderFragment
 	}
 }

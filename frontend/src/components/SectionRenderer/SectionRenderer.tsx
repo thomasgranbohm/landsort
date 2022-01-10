@@ -30,7 +30,6 @@ const SectionRenderer = ({ sections }: SectionRendererProps) => {
 		} else if (__typename === 'ComponentSectionsWysiwyg') {
 			const { content } = rest as Fragments.Sections.Wysiwyg;
 
-			// return <Paragraph>{content}</Paragraph>;
 			return <HTMLRenderer html={content} />;
 		}
 

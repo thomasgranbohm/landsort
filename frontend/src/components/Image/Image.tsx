@@ -1,19 +1,38 @@
+import clsx from 'clsx';
 import NextImage, { ImageProps as NextImageProps } from 'next/image';
-
-import Column from 'components/Column/Column';
+import {
+	cloneElement,
+	Component,
+	createElement,
+	HTMLAttributes,
+	isValidElement,
+	ReactElement,
+	ReactHTML,
+	ReactNode,
+} from 'react';
 
 import { getStrapiMedia } from 'utils/media';
 import { Fragments } from 'utils/types';
 
-type ImageProps = Omit<NextImageProps, 'src'> & Fragments.Media;
+import classes from './Image.module.scss';
+
+type ImageProps = Omit<NextImageProps, 'src'> &
+	Fragments.Media & {
+		wrapper?: ReactElement<any, any>;
+	};
 
 const Image = ({
 	alternativeText,
-	caption,
-	formats,
-	name,
-	url,
 	alt,
+	caption,
+	className,
+	formats,
+	height,
+	layout,
+	name,
+	wrapper = createElement('div'),
+	url,
+	width,
 	...props
 }: ImageProps) => {
 	const source = getStrapiMedia(url).replace(
@@ -28,16 +47,31 @@ const Image = ({
 			? formats.base64.url
 			: `/_next/image?url=${source}&w=32&q=1`;
 
-	return (
-		<Column size="large">
-			<NextImage
-				{...props}
-				placeholder="blur"
-				blurDataURL={blurDataURL}
-				src={source}
-				alt={alternative}
-			/>
-		</Column>
+	const layoutProps: Partial<NextImageProps> =
+		layout === 'fill'
+			? {
+					layout,
+			  }
+			: {
+					width,
+					height,
+					layout: layout || 'responsive',
+			  };
+
+	return cloneElement(
+		wrapper,
+		{
+			className: clsx(classes['container'], className),
+		},
+		<NextImage
+			placeholder="blur"
+			blurDataURL={blurDataURL}
+			src={source}
+			alt={alternative}
+			objectFit="contain"
+			{...props}
+			{...layoutProps}
+		/>
 	);
 };
 

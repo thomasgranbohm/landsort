@@ -21,32 +21,43 @@
 	}
 }
 
-@mixin extra-small-device {
+@mixin breakpoint-extra-small {
 	@media only screen and (max-width: 600px) {
 		@content;
 	}
 }
 
-@mixin small-device {
+@mixin breakpoint-small {
 	@media only screen and (min-width: 600px) {
 		@content;
 	}
 }
 
-@mixin medium-device {
+@mixin breakpoint-medium {
 	@media only screen and (min-width: 768px) {
 		@content;
 	}
 }
 
-@mixin large-device {
+@mixin breakpoint-large {
 	@media only screen and (min-width: 992px) {
 		@content;
 	}
 }
 
-@mixin extra-large-device {
+@mixin breakpoint-extra-large {
 	@media only screen and (min-width: 1200px) {
 		@content;
 	}
+}
+
+@mixin without-navigation {
+	@media (max-width: 1280px) {
+		@content;
+	}
+}
+
+@mixin apply-signature {
+	background-color: $signature;
+	color: white;
 }
