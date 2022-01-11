@@ -1,3 +1,6 @@
 .env
 database
 !database/.gitkeep
+
+config/*.env
+!config/example.*.env
