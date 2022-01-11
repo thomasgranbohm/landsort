@@ -62,8 +62,6 @@ export const getStaticPaths: GetStaticPaths = async ({}) => {
 const BlogPage = ({ global, header, page }: Queries.PageBySlug) => {
 	const { sections, title, slug } = normalize<Fragments.Page>(page);
 
-	console.log({ title, slug });
-
 	return (
 		<Layout
 			breadcrumbs={[{ title, slug }]}

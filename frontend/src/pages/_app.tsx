@@ -11,6 +11,8 @@ import { Fragments, Queries } from 'utils/types';
 function MyApp({ Component, pageProps }: AppProps) {
 	const { global } = pageProps as Queries.Base;
 
+	if (!global) throw new Error('Did not get global');
+
 	const { title, title_prefix, favicon, logo } =
 		normalize<Fragments.Global>(global);
 
