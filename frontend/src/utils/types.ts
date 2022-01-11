@@ -5,15 +5,24 @@ export interface Format {
 }
 
 export namespace Strapi {
+	export type V4Attributes<T> = { attributes: T };
 	export type V4Wrapper<T> = T extends Array<infer E>
 		? {
-				data: Array<{ attributes: E }>;
+				data: Array<V4Attributes<E>>;
 		  }
 		: {
-				data: {
-					attributes: T;
-				};
+				data: V4Attributes<T>;
 		  };
+	export type V4Pagination<T> = V4Wrapper<T> & {
+		meta: {
+			pagination: {
+				page: number;
+				pageCount: number;
+				pageSize: number;
+				total: number;
+			};
+		};
+	};
 	export type Cleaned<T extends { __typename: string }> = Omit<
 		T,
 		'__typename'
@@ -43,7 +52,13 @@ export namespace Fragments {
 		title: string;
 		slug: string;
 		sections: Fragments.Sections.All[];
+		parent: Strapi.V4Wrapper<Fragments.Page>;
 	}
+	export interface Startpage {
+		title: string;
+		sections: Fragments.Sections.All[];
+	}
+	export type PageSlugs = Array<Pick<Fragments.Page, 'slug' | 'parent'>>;
 
 	export interface Media extends Strapi.Format {
 		alternativeText?: string;
@@ -74,7 +89,15 @@ export namespace Fragments {
 }
 
 export namespace Queries {
-	export interface Page extends Base {
+	export interface Startpage extends Base {
+		startpage: Strapi.V4Wrapper<Fragments.Startpage>;
+	}
+
+	export interface PageSlugs {
+		pages: Strapi.V4Wrapper<Fragments.PageSlugs>;
+	}
+
+	export interface PageBySlug extends Base {
 		page: Strapi.V4Wrapper<Fragments.Page>;
 	}
 

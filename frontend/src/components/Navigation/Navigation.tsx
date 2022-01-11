@@ -1,19 +1,13 @@
 import { useOverlayTriggerState } from '@react-stately/overlays';
 import clsx from 'clsx';
 import { useRef } from 'react';
-import {
-	FocusScope,
-	OverlayContainer,
-	useButton,
-	useOverlay,
-	usePreventScroll,
-} from 'react-aria';
+import { FocusScope, useButton, usePreventScroll } from 'react-aria';
 
 import Anchor from 'components/Anchor/Anchor';
+import Column from 'components/Column/Column';
 import Image from 'components/Image/Image';
 
 import { normalize } from 'utils/functions';
-import { useBreakpoint } from 'utils/hooks';
 import { Fragments, Strapi } from 'utils/types';
 
 import classes from './Navigation.module.scss';
@@ -36,14 +30,15 @@ const Navigation = ({ logo, menus }: NavigationProps) => {
 	usePreventScroll({ isDisabled: !state.isOpen });
 
 	return (
-		<FocusScope contain={state.isOpen}>
-			<nav
-				className={clsx(
-					classes['container'],
-					state.isOpen && classes['open']
-				)}
-			>
-				<Anchor key="ok" href="/" className={classes['logo-container']}>
+		<Column
+			size="full"
+			className={clsx(
+				classes['container'],
+				state.isOpen && classes['open']
+			)}
+		>
+			<FocusScope contain={state.isOpen}>
+				<Anchor href="/" className={classes['logo-container']}>
 					<Image
 						className={classes['logo']}
 						{...normalize(logo)}
@@ -82,8 +77,8 @@ const Navigation = ({ logo, menus }: NavigationProps) => {
 						</li>
 					))}
 				</ul>
-			</nav>
-		</FocusScope>
+			</FocusScope>
+		</Column>
 	);
 };
 

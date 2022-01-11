@@ -1,35 +1,33 @@
 import clsx from 'clsx';
 import Link from 'next/link';
-import { AnchorHTMLAttributes, FC } from 'react';
+import { AnchorHTMLAttributes, forwardRef } from 'react';
 
 import classes from './Anchor.module.scss';
 
-interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+export interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 	href?: string;
 	clean?: boolean;
 }
 
-const Anchor: FC<AnchorProps> = ({
-	href,
-	children,
-	className,
-	clean,
-	...props
-}) => (
-	<Link href={href}>
-		<a
-			className={clsx(
-				classes['container'],
-				clean && classes['clean'],
-				className
-			)}
-			rel="noopener noreferrer"
-			target="_self"
-			{...props}
-		>
-			{children}
-		</a>
-	</Link>
+// eslint-disable-next-line react/display-name
+const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
+	({ href, children, className, clean, ...props }, ref) => (
+		<Link href={href}>
+			<a
+				ref={ref}
+				className={clsx(
+					classes['container'],
+					clean && classes['clean'],
+					className
+				)}
+				rel="noopener noreferrer"
+				target="_self"
+				{...props}
+			>
+				{children}
+			</a>
+		</Link>
+	)
 );
 
 export default Anchor;

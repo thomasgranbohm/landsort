@@ -1,4 +1,6 @@
+import Column from 'components/Column/Column';
 import Image from 'components/Image/Image';
+import Row from 'components/Row/Row';
 
 import { normalize } from 'utils/functions';
 import { Fragments, Strapi } from 'utils/types';
@@ -8,10 +10,14 @@ import classes from './ImageWithCaption.module.scss';
 type ImageWithCaptionProps = Strapi.Cleaned<Fragments.Sections.Media>;
 
 const ImageWithCaption = ({ media, credit }: ImageWithCaptionProps) => (
-	<figure className={classes['container']}>
-		<Image {...normalize(media)} />
-		<figcaption className={classes['credit']}>{credit}</figcaption>
-	</figure>
+	<Row className={classes['container']} tag="figure">
+		<Column size="larger">
+			<Image className={classes['image']} {...normalize(media)} />
+		</Column>
+		<Column className={classes['credit']} tag="figcaption" size="full">
+			<cite className={classes['inner']}>{credit}</cite>
+		</Column>
+	</Row>
 );
 
 export default ImageWithCaption;

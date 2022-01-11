@@ -4,11 +4,12 @@
 #import "./fragments/Global.gql"
 #import "./fragments/Header.gql"
 
-query {
-	startpage {
+query PageSlugs($slug: String) {
+	page: pageBySlug(slug: $slug) {
 		data {
 			attributes {
 				title
+				slug
 				sections {
 					__typename
 					... on ComponentSectionsMedia {
@@ -23,6 +24,30 @@ query {
 					}
 					... on ComponentSectionsWysiwyg {
 						content
+					}
+				}
+				parent {
+					data {
+						attributes {
+							slug
+							title
+							parent {
+								data {
+									attributes {
+										slug
+										title
+										parent {
+											data {
+												attributes {
+													slug
+													title
+												}
+											}
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}

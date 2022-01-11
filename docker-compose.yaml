@@ -1,7 +1,7 @@
 version: '3'
 services:
   backend:
-    command: bash -c 'npm run dev || (npm install && npm run dev)'
+    command: bash -c 'npm run dev'
     env_file: ./config/backend.env
     expose:
       - '1337'

@@ -10,7 +10,9 @@ import { normalize } from 'utils/functions';
 import { Fragments, Queries } from 'utils/types';
 
 export const getStaticProps: GetStaticProps = async () => {
-	const { data, errors } = await queryGraphQL<Queries.Page>(StartPageQuery);
+	const { data, errors } = await queryGraphQL<Queries.Startpage>(
+		StartPageQuery
+	);
 
 	if (!!errors && errors.length > 0) {
 		throw errors;
@@ -22,8 +24,8 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
-const Home = ({ global, header, page }: Queries.Page) => {
-	const { sections, title } = normalize<Fragments.Page>(page);
+const Startpage = ({ global, header, startpage }: Queries.Startpage) => {
+	const { sections, title } = normalize<Fragments.Startpage>(startpage);
 
 	return (
 		<Layout
@@ -36,4 +38,4 @@ const Home = ({ global, header, page }: Queries.Page) => {
 	);
 };
 
-export default Home;
+export default Startpage;

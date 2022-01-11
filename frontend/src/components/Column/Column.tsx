@@ -1,24 +1,30 @@
 import clsx from 'clsx';
-import { FC, HTMLAttributes } from 'react';
+import { FC, HTMLAttributes, ReactHTML } from 'react';
 
 import classes from './Column.module.scss';
 
 interface ColumnProps extends HTMLAttributes<HTMLElement> {
-	size?: 'large' | 'medium' | 'small';
+	size?: 'full' | 'larger' | 'large' | 'medium' | 'small';
+	tag?: keyof ReactHTML;
 }
 
 const Column: FC<ColumnProps> = ({
 	children,
 	className,
 	size = 'medium',
+	tag = 'div',
 	...props
-}) => (
-	<div
-		className={clsx(classes['container'], classes[size], className)}
-		{...props}
-	>
-		{children}
-	</div>
-);
+}) => {
+	const Element = tag;
+
+	return (
+		<Element
+			className={clsx(classes['container'], classes[size], className)}
+			{...props}
+		>
+			{children}
+		</Element>
+	);
+};
 
 export default Column;

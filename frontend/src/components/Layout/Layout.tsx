@@ -1,12 +1,10 @@
-import clsx from 'clsx';
 import { FC } from 'react';
 
 import Anchor from 'components/Anchor/Anchor';
-import Heading from 'components/Heading/Heading';
-import Image from 'components/Image/Image';
+import Column from 'components/Column/Column';
+import Header from 'components/Header/Header';
 import Navigation from 'components/Navigation/Navigation';
 
-import { normalize } from 'utils/functions';
 import { Fragments } from 'utils/types';
 
 import classes from './Layout.module.scss';
@@ -20,14 +18,14 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ global, header, children, title }) => (
 	<div className={classes['container']}>
 		<Navigation logo={global.logo} {...header} />
-		<header>
-			<Heading type="h1">{title || 'Landsort Fågelstation'}</Heading>
-		</header>
+		<Header title={title} />
 		<main>{children}</main>
 		<footer>
-			<Anchor href="https://github.com/thomasgranbohm/landsort">
-				Source code
-			</Anchor>
+			<Column size="large">
+				<Anchor href="https://github.com/thomasgranbohm/landsort">
+					Source code
+				</Anchor>
+			</Column>
 		</footer>
 	</div>
 );

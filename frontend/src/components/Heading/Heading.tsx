@@ -1,17 +1,14 @@
 import clsx from 'clsx';
-import { Children, FC } from 'react';
+import { Children, FC, HTMLAttributes } from 'react';
 import slugify from 'slugify';
-
-import Anchor from 'components/Anchor/Anchor';
-import Column from 'components/Column/Column';
 
 import classes from './Heading.module.scss';
 
-interface HeadingProps {
+interface HeadingProps extends HTMLAttributes<HTMLHeadingElement> {
 	type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'b';
 }
 
-const Heading: FC<HeadingProps> = ({ type, children }) => {
+const Heading: FC<HeadingProps> = ({ type, children, className, ...props }) => {
 	const Element = type;
 
 	let slug = undefined;
@@ -28,19 +25,18 @@ const Heading: FC<HeadingProps> = ({ type, children }) => {
 	}
 
 	return (
-		<Column>
-			<Element
-				className={clsx(classes['container'], classes[type])}
-				id={
-					slug &&
-					slugify(slug, {
-						lower: true,
-					})
-				}
-			>
-				{children}
-			</Element>
-		</Column>
+		<Element
+			{...props}
+			className={clsx(classes['container'], classes[type], className)}
+			id={
+				slug &&
+				slugify(slug, {
+					lower: true,
+				})
+			}
+		>
+			{children}
+		</Element>
 	);
 };
 

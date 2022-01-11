@@ -1,0 +1,38 @@
+query PageSlugs {
+	pages {
+		data {
+			attributes {
+				slug
+				parent {
+					data {
+						attributes {
+							slug
+							parent {
+								data {
+									attributes {
+										slug
+										parent {
+											data {
+												attributes {
+													slug
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		meta {
+			pagination {
+				page
+				pageCount
+				pageSize
+				total
+			}
+		}
+	}
+}

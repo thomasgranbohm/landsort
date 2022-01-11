@@ -1,3 +1,5 @@
+@import 'styles/includes';
+
 .container {
 	position: relative;
 
@@ -6,13 +8,24 @@
 
 	width: 100%;
 
+	--padding: 1em;
+	padding: 0 var(--padding);
+
+	@function max-width($width) {
+		@return calc(#{$width} - (var(--padding) * 2));
+	}
+
 	&.small {
-		max-width: 56ch;
+		max-width: max-width(56ch);
 	}
 	&.medium {
-		max-width: 70ch;
+		max-width: max-width(70ch);
 	}
 	&.large {
-		max-width: 100%;
+		max-width: max-width($page-width);
+	}
+	&.larger {
+		--padding: 0px;
+		max-width: max-width(1280px);
 	}
 }
