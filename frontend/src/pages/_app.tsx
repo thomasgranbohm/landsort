@@ -28,15 +28,6 @@ function MyApp({ Component, pageProps }: AppProps) {
 							)}
 						/>
 					)}
-					<DefaultSeo
-						defaultTitle={title}
-						titleTemplate={title_prefix}
-						openGraph={{
-							images: parseOGImages(
-								normalize<Fragments.Media>(logo)
-							),
-						}}
-					/>
 					{/* IE11 to Edge redirect. See https://stackoverflow.com/questions/63404573/how-to-redirect-from-internet-explorer-to-microsoft-edge-seamlessly */}
 					<script
 						dangerouslySetInnerHTML={{
@@ -44,6 +35,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 						}}
 					/>
 				</Head>
+				<DefaultSeo
+					defaultTitle={title}
+					titleTemplate={title_prefix}
+					openGraph={{
+						images: parseOGImages(normalize<Fragments.Media>(logo)),
+					}}
+				/>
 				<Component {...pageProps} />
 			</OverlayProvider>
 		</SSRProvider>

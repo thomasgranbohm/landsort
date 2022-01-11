@@ -10,10 +10,10 @@ import { Breadcrumb, Fragments } from 'utils/types';
 import classes from './Layout.module.scss';
 
 interface LayoutProps {
-	title?: string;
+	breadcrumbs?: Array<Breadcrumb>;
 	global: Fragments.Global;
 	navigation: Fragments.Header;
-	breadcrumbs?: Array<Breadcrumb>;
+	title?: string;
 }
 
 const Layout: FC<LayoutProps> = ({

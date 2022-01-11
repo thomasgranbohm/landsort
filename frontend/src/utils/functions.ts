@@ -20,7 +20,7 @@ export const normalize = <T>(a: Input<T>): Output<T> => {
 
 	if (typeof a === 'object') {
 		if ('data' in a === false || !a.data)
-			throw new Error('Data is not set or not defined');
+			throw new Error('Data is not set or not defined.');
 
 		if (Array.isArray(a.data)) {
 			return a.data
@@ -38,7 +38,7 @@ export const normalize = <T>(a: Input<T>): Output<T> => {
 		}
 	}
 
-	throw new Error('Input is not object');
+	throw new Error('Input is not object.');
 };
 
 export const getSlug = ({
