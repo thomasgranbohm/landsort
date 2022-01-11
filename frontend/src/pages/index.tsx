@@ -18,6 +18,10 @@ export const getStaticProps: GetStaticProps = async () => {
 		throw errors;
 	}
 
+	if (!data.startpage) {
+		throw new Error('Did not receive Startpage');
+	}
+
 	return {
 		props: data,
 		revalidate: 60,

@@ -27,6 +27,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 		throw errors;
 	}
 
+	if (!data.page) {
+		throw new Error('Did not receive Page');
+	}
+
 	return {
 		props: data,
 		revalidate: 60,
