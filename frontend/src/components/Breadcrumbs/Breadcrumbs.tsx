@@ -21,12 +21,16 @@ type BreadcrumbItemProps = {
 
 export const BreadcrumbItem: FC<BreadcrumbItemProps> = ({
 	isCurrent,
+	href,
 	...props
 }) => {
 	const ref = useRef();
 
 	const { itemProps } = useBreadcrumbItem(
-		props as AriaBreadcrumbsProps<HTMLAnchorElement>,
+		{
+			isDisabled: isCurrent,
+			...(props as AriaBreadcrumbsProps<HTMLAnchorElement>),
+		},
 		ref
 	);
 
@@ -36,13 +40,14 @@ export const BreadcrumbItem: FC<BreadcrumbItemProps> = ({
 				{...itemProps}
 				{...props}
 				className={classes['item']}
+				href={isCurrent ? null : href}
 				ref={ref}
 			>
 				{props.children}
 			</Anchor>
 			{!isCurrent && (
 				<span className={classes['delimiter']} aria-hidden="true">
-					&gt;
+					/
 				</span>
 			)}
 		</li>
@@ -57,6 +62,7 @@ const Breadcrumbs: FC<OlHTMLAttributes<HTMLOListElement>> = ({
 
 	return (
 		<ol className={clsx(classes['container'], className)}>
+			<BreadcrumbItem href="/">Home</BreadcrumbItem>
 			{children.map((child, i) =>
 				cloneElement(child as ReactElement, {
 					isCurrent: i === children.length - 1,

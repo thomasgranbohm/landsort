@@ -4,11 +4,13 @@ import Breadcrumbs, {
 import Column from 'components/Column/Column';
 import Heading from 'components/Heading/Heading';
 
+import { Breadcrumb } from 'utils/types';
+
 import classes from './Header.module.scss';
 
-interface HeaderProps {
+export interface HeaderProps {
 	title: string;
-	breadcrumbs?: Array<{ title: string; slug: string }>;
+	breadcrumbs?: Array<Breadcrumb>;
 }
 
 const Header = ({ title, breadcrumbs }: HeaderProps) => (

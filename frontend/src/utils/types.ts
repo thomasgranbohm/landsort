@@ -4,6 +4,11 @@ export interface Format {
 	width: number;
 }
 
+export interface Breadcrumb {
+	title: string;
+	slug: string;
+}
+
 export namespace Strapi {
 	export type V4Attributes<T> = { attributes: T };
 	export type V4Wrapper<T> = T extends Array<infer E>

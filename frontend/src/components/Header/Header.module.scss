@@ -1,2 +1,5 @@
 .container {
+	.breadcrumbs ~ .title {
+		margin-top: 0.5rem;
+	}
 }

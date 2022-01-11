@@ -5,20 +5,27 @@ import Column from 'components/Column/Column';
 import Header from 'components/Header/Header';
 import Navigation from 'components/Navigation/Navigation';
 
-import { Fragments } from 'utils/types';
+import { Breadcrumb, Fragments } from 'utils/types';
 
 import classes from './Layout.module.scss';
 
 interface LayoutProps {
 	title?: string;
 	global: Fragments.Global;
-	header: Fragments.Header;
+	navigation: Fragments.Header;
+	breadcrumbs?: Array<Breadcrumb>;
 }
 
-const Layout: FC<LayoutProps> = ({ global, header, children, title }) => (
+const Layout: FC<LayoutProps> = ({
+	global,
+	navigation,
+	breadcrumbs,
+	children,
+	title,
+}) => (
 	<div className={classes['container']}>
-		<Navigation logo={global.logo} {...header} />
-		<Header title={title} />
+		<Navigation logo={global.logo} {...navigation} />
+		<Header breadcrumbs={breadcrumbs} title={title} />
 		<main>{children}</main>
 		<footer>
 			<Column size="large">

@@ -60,12 +60,15 @@ export const getStaticPaths: GetStaticPaths = async ({}) => {
 };
 
 const BlogPage = ({ global, header, page }: Queries.PageBySlug) => {
-	const { sections, title } = normalize<Fragments.Page>(page);
+	const { sections, title, slug } = normalize<Fragments.Page>(page);
+
+	console.log({ title, slug });
 
 	return (
 		<Layout
+			breadcrumbs={[{ title, slug }]}
 			global={normalize(global)}
-			header={normalize(header)}
+			navigation={normalize(header)}
 			title={title}
 		>
 			<SectionRenderer sections={sections} />

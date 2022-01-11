@@ -8,7 +8,7 @@
 
 	.item {
 		cursor: pointer;
-		text-decoration: underline;
+		text-decoration: initial;
 
 		&.current {
 			cursor: default;

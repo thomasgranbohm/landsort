@@ -1,6 +1,8 @@
+import { AriaLinkOptions } from '@react-aria/link';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { AnchorHTMLAttributes, forwardRef } from 'react';
+import { AnchorHTMLAttributes, forwardRef, Fragment } from 'react';
+import { useLink } from 'react-aria';
 
 import classes from './Anchor.module.scss';
 
@@ -11,8 +13,8 @@ export interface AnchorProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 
 // eslint-disable-next-line react/display-name
 const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
-	({ href, children, className, clean, ...props }, ref) => (
-		<Link href={href}>
+	({ href, children, className, clean, ...props }, ref) => {
+		const child = (
 			<a
 				ref={ref}
 				className={clsx(
@@ -22,12 +24,15 @@ const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
 				)}
 				rel="noopener noreferrer"
 				target="_self"
+				aria-current="page"
 				{...props}
 			>
 				{children}
 			</a>
-		</Link>
-	)
+		);
+
+		return !!href ? <Link href={href}>{child}</Link> : child;
+	}
 );
 
 export default Anchor;

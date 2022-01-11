@@ -30,7 +30,7 @@ const Startpage = ({ global, header, startpage }: Queries.Startpage) => {
 	return (
 		<Layout
 			global={normalize(global)}
-			header={normalize(header)}
+			navigation={normalize(header)}
 			title={title}
 		>
 			<SectionRenderer sections={sections} />
