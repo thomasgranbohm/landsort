@@ -11,7 +11,7 @@ services:
       - '1337'
     ports:
       - '1337:1337'
-    user: landsort
+    user: node
     volumes:
       - ./backend:/home/landsort/app
       - ./config/backend.env:/home/landsort/app/.env
@@ -27,7 +27,7 @@ services:
       - '3000'
     ports:
       - '3000:3000'
-    user: landsort
+    user: node
     volumes:
       - ./frontend:/home/landsort/app
       - ./config/frontend.env:/home/landsort/app/.env

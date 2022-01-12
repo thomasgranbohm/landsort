@@ -1,4 +1,6 @@
-import { Fragments, Strapi } from './types';
+import { Fragment } from 'react';
+
+import { Breadcrumb, Fragments, Strapi } from './types';
 
 /**
  * Since Strapi updated their GraphQL API in v4
@@ -49,4 +51,15 @@ export const getSlug = ({
 		return [...getSlug(normalize(parent)), slug];
 	}
 	return [slug];
+};
+
+export const getBreadcrumbs = ({
+	parent,
+	slug,
+	title,
+}: Pick<Fragments.Page, 'parent' | 'slug' | 'title'>): Breadcrumb[] => {
+	if (!!parent && !!parent.data) {
+		return [...getBreadcrumbs(normalize(parent)), { slug, title }];
+	}
+	return [{ title, slug }];
 };

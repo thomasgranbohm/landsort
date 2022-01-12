@@ -12,20 +12,13 @@ import classes from './Layout.module.scss';
 interface LayoutProps {
 	breadcrumbs?: Array<Breadcrumb>;
 	global: Fragments.Global;
-	navigation: Fragments.Header;
 	title?: string;
 }
 
-const Layout: FC<LayoutProps> = ({
-	global,
-	navigation,
-	breadcrumbs,
-	children,
-	title,
-}) => (
+const Layout: FC<LayoutProps> = ({ global, breadcrumbs, children, title }) => (
 	<div className={classes['container']}>
-		<Navigation logo={global.logo} {...navigation} />
-		<Header breadcrumbs={breadcrumbs} title={title} />
+		<Navigation {...global} />
+		<Header breadcrumbs={breadcrumbs} title={title} home={global.home} />
 		<main>{children}</main>
 		<footer>
 			<Column size="large">

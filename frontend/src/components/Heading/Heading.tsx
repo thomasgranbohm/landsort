@@ -19,8 +19,6 @@ const Heading: FC<HeadingProps> = ({ type, children, className, ...props }) => {
 			slug = children.join('-');
 		} else if (typeof children === 'string') {
 			slug = children;
-		} else {
-			console.debug('Children was unsupported type.');
 		}
 	}
 

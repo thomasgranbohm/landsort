@@ -1,8 +1,8 @@
 #import "./fragments/Media.gql"
+#import "./fragments/MenuItem.gql"
 
 # Globals
 #import "./fragments/Global.gql"
-#import "./fragments/Header.gql"
 
 query PageSlugs($slug: String) {
 	page: pageBySlug(slug: $slug) {
@@ -29,21 +29,11 @@ query PageSlugs($slug: String) {
 				parent {
 					data {
 						attributes {
-							slug
-							title
+							...MenuItemFragment
 							parent {
 								data {
 									attributes {
-										slug
-										title
-										parent {
-											data {
-												attributes {
-													slug
-													title
-												}
-											}
-										}
+										...MenuItemFragment
 									}
 								}
 							}
@@ -56,8 +46,5 @@ query PageSlugs($slug: String) {
 
 	global {
 		...GlobalFragment
-	}
-	header {
-		...HeaderFragment
 	}
 }

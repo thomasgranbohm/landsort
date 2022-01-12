@@ -1,8 +1,0 @@
-fragment MenuItemsFragment on PageRelationResponseCollection {
-	data {
-		attributes {
-			title
-			slug
-		}
-	}
-}

@@ -15,7 +15,8 @@ export const getStaticProps: GetStaticProps = async () => {
 	);
 
 	if (!!errors && errors.length > 0) {
-		throw errors;
+		console.error(errors);
+		throw errors[0];
 	}
 
 	if (!data.startpage) {
@@ -28,15 +29,11 @@ export const getStaticProps: GetStaticProps = async () => {
 	};
 };
 
-const Startpage = ({ global, header, startpage }: Queries.Startpage) => {
+const Startpage = ({ global, startpage }: Queries.Startpage) => {
 	const { sections, title } = normalize<Fragments.Startpage>(startpage);
 
 	return (
-		<Layout
-			global={normalize(global)}
-			navigation={normalize(header)}
-			title={title}
-		>
+		<Layout global={normalize(global)} title={title}>
 			<SectionRenderer sections={sections} />
 		</Layout>
 	);

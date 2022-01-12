@@ -7,7 +7,7 @@ import PageBySlugQuery from 'queries/PageBySlug.gql';
 import PageSlugsQuery from 'queries/PageSlugs.gql';
 
 import { queryGraphQL } from 'utils/api';
-import { getSlug, normalize } from 'utils/functions';
+import { getBreadcrumbs, getSlug, normalize } from 'utils/functions';
 import { Fragments, Queries } from 'utils/types';
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -63,14 +63,13 @@ export const getStaticPaths: GetStaticPaths = async ({}) => {
 	};
 };
 
-const BlogPage = ({ global, header, page }: Queries.PageBySlug) => {
-	const { sections, title, slug } = normalize<Fragments.Page>(page);
+const BlogPage = ({ global, page }: Queries.PageBySlug) => {
+	const { parent, sections, slug, title } = normalize<Fragments.Page>(page);
 
 	return (
 		<Layout
-			breadcrumbs={[{ title, slug }]}
+			breadcrumbs={getBreadcrumbs({ parent, slug, title })}
 			global={normalize(global)}
-			navigation={normalize(header)}
 			title={title}
 		>
 			<SectionRenderer sections={sections} />

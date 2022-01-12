@@ -2,7 +2,6 @@
 
 # Globals
 #import "./fragments/Global.gql"
-#import "./fragments/Header.gql"
 
 query {
 	startpage {
@@ -31,8 +30,5 @@ query {
 
 	global {
 		...GlobalFragment
-	}
-	header {
-		...HeaderFragment
 	}
 }

@@ -10,15 +10,27 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "title": {
-      "pluginOptions": {},
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "type": "string",
       "required": true
     },
     "title_prefix": {
-      "pluginOptions": {},
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "type": "string",
       "required": true
     },
@@ -29,7 +41,11 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {}
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "logo": {
       "type": "media",
@@ -38,7 +54,29 @@
       "allowedTypes": [
         "images"
       ],
-      "pluginOptions": {}
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "menus": {
+      "type": "component",
+      "repeatable": true,
+      "component": "header.menu",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "home": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     }
   }
 }

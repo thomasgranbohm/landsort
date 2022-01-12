@@ -1,8 +1,6 @@
-import { AriaLinkOptions } from '@react-aria/link';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { AnchorHTMLAttributes, forwardRef, Fragment } from 'react';
-import { useLink } from 'react-aria';
+import { AnchorHTMLAttributes, forwardRef } from 'react';
 
 import classes from './Anchor.module.scss';
 
@@ -24,7 +22,11 @@ const Anchor = forwardRef<HTMLAnchorElement, AnchorProps>(
 				)}
 				rel="noopener noreferrer"
 				target="_self"
-				aria-current="page"
+				onClick={(e) => {
+					if (!!href && href.startsWith('/')) {
+						(e.target as HTMLElement).blur();
+					}
+				}}
 				{...props}
 			>
 				{children}

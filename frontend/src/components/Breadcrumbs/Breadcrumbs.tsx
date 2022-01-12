@@ -39,7 +39,10 @@ export const BreadcrumbItem: FC<BreadcrumbItemProps> = ({
 			<Anchor
 				{...itemProps}
 				{...props}
-				className={classes['item']}
+				className={clsx(
+					classes['item'],
+					isCurrent && classes['current']
+				)}
 				href={isCurrent ? null : href}
 				ref={ref}
 			>
@@ -54,15 +57,16 @@ export const BreadcrumbItem: FC<BreadcrumbItemProps> = ({
 	);
 };
 
-const Breadcrumbs: FC<OlHTMLAttributes<HTMLOListElement>> = ({
-	className,
-	...props
-}) => {
+interface BreadcrumbsProps extends OlHTMLAttributes<HTMLOListElement> {
+	home: string;
+}
+
+const Breadcrumbs: FC<BreadcrumbsProps> = ({ className, home, ...props }) => {
 	const children = Children.toArray(props.children);
 
 	return (
 		<ol className={clsx(classes['container'], className)}>
-			<BreadcrumbItem href="/">Home</BreadcrumbItem>
+			<BreadcrumbItem href="/">{home}</BreadcrumbItem>
 			{children.map((child, i) =>
 				cloneElement(child as ReactElement, {
 					isCurrent: i === children.length - 1,

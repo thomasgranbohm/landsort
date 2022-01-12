@@ -7,13 +7,14 @@ import Anchor from 'components/Anchor/Anchor';
 import Column from 'components/Column/Column';
 import Image from 'components/Image/Image';
 
-import { normalize } from 'utils/functions';
+import { getSlug, normalize } from 'utils/functions';
 import { Fragments, Strapi } from 'utils/types';
 
 import classes from './Navigation.module.scss';
 
-interface NavigationProps extends Fragments.Header {
+interface NavigationProps {
 	logo: Strapi.V4Wrapper<Fragments.Media>;
+	menus: Fragments.Menu[];
 }
 
 const Navigation = ({ logo, menus }: NavigationProps) => {
@@ -58,21 +59,26 @@ const Navigation = ({ logo, menus }: NavigationProps) => {
 					{menus.map(({ pages, title }, i) => (
 						<li className={classes['item']} key={i}>
 							<p className={classes['title']} tabIndex={0}>
-								{title}
+								<b>{title}</b>
 								<span className={classes['icon']}>&gt;</span>
 							</p>
 							<ul className={classes['sub-menu']}>
-								{pages.data.map(({ attributes }, i) => (
-									<li key={i} className={classes['item']}>
-										<Anchor
-											className={classes['title']}
-											clean
-											href={`/${attributes.slug}`}
-										>
-											{attributes.title}
-										</Anchor>
-									</li>
-								))}
+								{normalize<Fragments.MenuItem[]>(pages).map(
+									({ title, parent, slug }, i) => (
+										<li key={i} className={classes['item']}>
+											<Anchor
+												className={classes['title']}
+												clean
+												href={`/${getSlug({
+													parent,
+													slug,
+												}).join('/')}`}
+											>
+												{title}
+											</Anchor>
+										</li>
+									)
+								)}
 							</ul>
 						</li>
 					))}

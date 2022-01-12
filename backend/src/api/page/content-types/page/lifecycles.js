@@ -5,10 +5,9 @@ const slugify = require('slugify');
 // https://github.com/VirtusLab-Open-Source/strapi-plugin-navigation/issues/47
 
 const validateData = async (event) => {
-	const { action, params } = event;
+	const { action, params, result } = event;
 
 	const data = action === 'afterCreate' ? result : params.data;
-	console.log(action, data, params);
 	const id = action === 'afterCreate' ? data.id : params.where.id;
 
 	const hasChildren = !!data.children && data.children.length > 0;
@@ -56,12 +55,10 @@ const validateData = async (event) => {
 		if (!!header && !!header.menus && header.menus.length > 0) {
 			const { menus } = header;
 
-			const idsInSubmenu = menus.flatMap(({ pages }) =>
-				pages.map(({ id }) => id)
-			);
+			const idsInSubmenu = menus.flatMap(({ page }) => page.id);
 
 			if (idsInSubmenu.includes(id)) {
-				throw new Error('Page cannot have parent and be in a submenu');
+				throw new Error('Page cannot have parent and be a sub-menu');
 			}
 		}
 	}

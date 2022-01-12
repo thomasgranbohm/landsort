@@ -11,13 +11,14 @@ import classes from './Header.module.scss';
 export interface HeaderProps {
 	title: string;
 	breadcrumbs?: Array<Breadcrumb>;
+	home?: string;
 }
 
-const Header = ({ title, breadcrumbs }: HeaderProps) => (
+const Header = ({ title, breadcrumbs, home }: HeaderProps) => (
 	<header className={classes['container']}>
 		<Column size="medium">
-			{breadcrumbs && breadcrumbs.length > 0 && (
-				<Breadcrumbs className={classes['breadcrumbs']}>
+			{home && breadcrumbs && breadcrumbs.length > 0 && (
+				<Breadcrumbs className={classes['breadcrumbs']} home={home}>
 					{breadcrumbs.map(({ slug, title }, i) => (
 						<BreadcrumbItem key={i} href={slug}>
 							{title}

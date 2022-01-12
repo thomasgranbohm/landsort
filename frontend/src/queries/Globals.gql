@@ -1,11 +1,7 @@
 #import "./fragments/Global.gql"
-#import "./fragments/Header.gql"
 
-query Global {
+query Globals {
 	global {
 		...GlobalFragment
-	}
-	header {
-		...HeaderFragment
 	}
 }

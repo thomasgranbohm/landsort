@@ -1,15 +1,41 @@
 #import "./Media.gql"
+#import "./MenuItem.gql"
 
 fragment GlobalFragment on GlobalEntityResponse {
 	data {
 		attributes {
 			title
 			title_prefix
+			home
 			favicon {
 				...MediaFragment
 			}
 			logo {
 				...MediaFragment
+			}
+			menus {
+				title
+				pages {
+					data {
+						attributes {
+							...MenuItemFragment
+							parent {
+								data {
+									attributes {
+										...MenuItemFragment
+										parent {
+											data {
+												attributes {
+													...MenuItemFragment
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
 			}
 		}
 	}

@@ -40,19 +40,23 @@ export namespace Strapi {
 }
 
 export namespace Fragments {
+	export interface Breadcrumb {
+		title: string;
+		slug: string;
+	}
+	export interface Menu {
+		title: string;
+		pages: Strapi.V4Wrapper<Array<Fragments.MenuItem>>;
+	}
+	export type MenuItem = Pick<Fragments.Page, 'title' | 'slug' | 'parent'>;
 	export interface Global {
 		title: string;
 		title_prefix: string;
+		home: string;
 		favicon: Strapi.V4Wrapper<Fragments.Media>;
 		logo: Strapi.V4Wrapper<Fragments.Media>;
+		menus: Array<Fragments.Menu>;
 	}
-	export interface Header {
-		menus: Array<{
-			title: string;
-			pages: Strapi.V4Wrapper<Array<Fragments.MenuItem>>;
-		}>;
-	}
-	export type MenuItem = Pick<Fragments.Page, 'title' | 'slug'>;
 	export interface Page {
 		title: string;
 		slug: string;
@@ -108,6 +112,5 @@ export namespace Queries {
 
 	export interface Base {
 		global: Strapi.V4Wrapper<Fragments.Global>;
-		header: Strapi.V4Wrapper<Fragments.Header>;
 	}
 }

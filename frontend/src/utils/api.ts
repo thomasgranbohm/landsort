@@ -1,5 +1,6 @@
 import { ApolloError } from '@apollo/client';
 import { GraphQLError } from 'graphql';
+
 import { privateClient } from './apollo-client';
 
 export function getStrapiURL(path: string) {
@@ -22,15 +23,11 @@ export async function queryGraphQL<T>(
 
 		return { data, errors };
 	} catch (error: unknown) {
-		if (
-			error instanceof ApolloError &&
-			!!error.networkError &&
-			'result' in error['networkError']
-		)
+		if (error instanceof ApolloError && !!error.networkError)
 			console.error(
 				'GraphQL Error:',
-				JSON.stringify(error.networkError.result, null, 4) ||
-					error.networkError.result
+				JSON.stringify(error.networkError, null, 4) ||
+					error.networkError
 			);
 		else console.log(error);
 		throw error;
