@@ -1,4 +1,5 @@
 import { OpenGraphMedia } from 'next-seo/lib/types';
+
 import { Fragments } from './types';
 
 export function getStrapiMedia(url: string) {
