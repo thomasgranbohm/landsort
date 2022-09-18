@@ -5,7 +5,7 @@ services:
     env_file: ./config/backend.env
     expose:
       - '1337'
-    image: node:14
+    image: node:16
     ports:
       - '1337:1337'
     user: node
@@ -19,7 +19,7 @@ services:
     env_file: ./config/frontend.env
     expose:
       - '3000'
-    image: node:14
+    image: node:16
     ports:
       - '3000:3000'
     user: node
