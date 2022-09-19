@@ -1,29 +1,51 @@
 import clsx from 'clsx';
-import { FC, HTMLAttributes, ReactHTML } from 'react';
+import { createElement, ReactHTML, ReactNode } from 'react';
+
+import { WithChildren, WithClassname } from 'utils/types';
 
 import classes from './Column.module.scss';
 
-interface ColumnProps extends HTMLAttributes<HTMLElement> {
-	size?: 'full' | 'larger' | 'large' | 'medium' | 'small';
+type SIZES = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
+
+type BREAKPOINTS =
+	| SIZES
+	| [SIZES, SIZES]
+	| [SIZES, SIZES, SIZES]
+	| [SIZES, SIZES, SIZES, SIZES];
+
+interface ColumnProps extends WithChildren, WithClassname {
+	size: BREAKPOINTS;
+	start?: BREAKPOINTS; // Which column to start from, not relative to current position.
 	tag?: keyof ReactHTML;
 }
 
-const Column: FC<ColumnProps> = ({
+const DEVICES = ['sm', 'md', 'lg', 'xl'];
+
+const Column = ({
 	children,
 	className,
-	size = 'medium',
+	size,
+	start,
 	tag = 'div',
-	...props
-}) => {
-	const Element = tag;
+}: ColumnProps) => {
+	const sizes = Array.isArray(size)
+		? size.map((a, i) => classes[[DEVICES[i], a].join('-')])
+		: classes[`size-${size}`];
 
-	return (
-		<Element
-			className={clsx(classes['container'], classes[size], className)}
-			{...props}
-		>
-			{children}
-		</Element>
+	const starts = Array.isArray(start)
+		? start.map((a, i) =>
+				a !== null
+					? classes[['start', DEVICES[i], a].join('-')]
+					: undefined
+		  )
+		: classes[`start-${start}`];
+
+	return createElement(
+		tag,
+		{
+			className: clsx(classes['container'], sizes, starts, className),
+		},
+		children
 	);
 };
 

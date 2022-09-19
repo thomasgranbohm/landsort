@@ -11,10 +11,10 @@ type ImageWithCaptionProps = Strapi.Cleaned<Fragments.Sections.Media>;
 
 const ImageWithCaption = ({ media, credit }: ImageWithCaptionProps) => (
 	<Row className={classes['container']} tag="figure">
-		<Column size="larger">
+		<Column size={12}>
 			<Image className={classes['image']} {...normalize(media)} />
 		</Column>
-		<Column className={classes['credit']} tag="figcaption" size="full">
+		<Column className={classes['credit']} tag="figcaption" size={12}>
 			<cite className={classes['inner']}>{credit}</cite>
 		</Column>
 	</Row>

@@ -1,31 +1,33 @@
-@import 'styles/includes';
+@import 'includes';
 
 .container {
-	position: relative;
+	grid-column: span 12;
 
-	margin-left: auto;
-	margin-right: auto;
+	@for $i from 1 through 12 {
+		&.size-#{$i} {
+			grid-column: span $i;
 
-	width: 100%;
-
-	--padding: 1em;
-	padding: 0 var(--padding);
-
-	@function max-width($width) {
-		@return calc(#{$width} - (var(--padding) * 2));
+			@for $start from 1 through 12 {
+				&.start-#{$start} {
+					grid-column: ($start + 1) / span $i;
+				}
+			}
+		}
 	}
 
-	&.small {
-		max-width: max-width(56ch);
-	}
-	&.medium {
-		max-width: max-width(70ch);
-	}
-	&.large {
-		max-width: max-width($page-width);
-	}
-	&.larger {
-		--padding: 0px;
-		max-width: max-width(1280px);
+	@each $name, $size in $breakpoints {
+		@for $i from 1 through 12 {
+			@include breakpoint($size) {
+				&.#{$name}-#{$i} {
+					grid-column: span $i;
+
+					@for $start from 1 through 12 {
+						&.start-#{$name}-#{$start} {
+							grid-column: ($start + 1) / span $i;
+						}
+					}
+				}
+			}
+		}
 	}
 }

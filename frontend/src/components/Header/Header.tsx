@@ -3,6 +3,7 @@ import Breadcrumbs, {
 } from 'components/Breadcrumbs/Breadcrumbs';
 import Column from 'components/Column/Column';
 import Heading from 'components/Heading/Heading';
+import Row from 'components/Row/Row';
 
 import { Breadcrumb } from 'utils/types';
 
@@ -15,8 +16,8 @@ export interface HeaderProps {
 }
 
 const Header = ({ title, breadcrumbs, home }: HeaderProps) => (
-	<header className={classes['container']}>
-		<Column size="medium">
+	<Row tag="header" className={classes['container']}>
+		<Column size={12}>
 			{home && breadcrumbs && breadcrumbs.length > 0 && (
 				<Breadcrumbs className={classes['breadcrumbs']} home={home}>
 					{breadcrumbs.map(({ slug, title }, i) => (
@@ -30,7 +31,7 @@ const Header = ({ title, breadcrumbs, home }: HeaderProps) => (
 				{title}
 			</Heading>
 		</Column>
-	</header>
+	</Row>
 );
 
 export default Header;

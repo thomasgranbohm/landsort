@@ -1,3 +1,13 @@
+@import 'includes';
+
 .container {
-	margin: 2em 0;
+	@include keep-within-width;
+
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	gap: $gutter;
+
+	& + & {
+		margin-top: $double-gutter;
+	}
 }

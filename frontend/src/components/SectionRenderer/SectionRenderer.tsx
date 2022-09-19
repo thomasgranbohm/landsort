@@ -40,10 +40,7 @@ const SectionRenderer = ({ sections }: SectionRendererProps) => {
 		<>
 			{sections &&
 				sections.length > 0 &&
-				sections
-					.map(renderSection)
-					.filter((a) => !!a)
-					.map((a, i) => <Row key={i}>{a}</Row>)}
+				sections.map(renderSection).filter((a) => !!a)}
 		</>
 	);
 };

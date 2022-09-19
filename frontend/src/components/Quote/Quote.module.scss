@@ -1,15 +1,20 @@
-.container {
-	background: rgba(224, 224, 224);
-	border-left: 6px rgba(196, 196, 196) solid;
+@import 'includes';
 
-	margin: 1rem auto;
+.container {
+	border-left: 6px $signature solid;
+
+	margin: 1rem 0;
 	padding: 1rem;
 
 	.author {
 		margin-top: 0.5em;
+		font-style: italic;
+		color: rgb(64 64 64);
+
 		&::before {
 			display: inline-block;
 			content: '–';
+			font-style: normal;
 
 			margin-right: 0.25em;
 		}
