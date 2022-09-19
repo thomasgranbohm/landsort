@@ -1,10 +1,15 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 module.exports = {
-	reactStrictMode: true,
+	reactStrictMode: false,
 	images: {
 		domains: ['backend'],
 	},
-	webpack: (config, options) => {
+	sassOptions: {
+		includePaths: [path.join(__dirname, 'src/styles')],
+	},
+	webpack: (config) => {
 		config.module.rules.push({
 			test: /\.(graphql|gql)$/,
 			exclude: /node_modules/,

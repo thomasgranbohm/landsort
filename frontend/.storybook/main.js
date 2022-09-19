@@ -13,6 +13,12 @@ module.exports = {
 		'@storybook/addon-essentials',
 		'@storybook/addon-interactions',
 		'@storybook/addon-a11y',
+		{
+			name: 'storybook-addon-next',
+			options: {
+				nextConfigPath: path.resolve(__dirname, '../next.config.js'),
+			},
+		},
 	],
 	framework: '@storybook/react',
 	core: {
@@ -28,33 +34,5 @@ module.exports = {
 				esModuleInterop: false,
 			},
 		},
-	},
-	webpackFinal: async (config) => {
-		config.module.rules.push({
-			test: /\.scss$/,
-			use: [
-				'style-loader',
-				{
-					loader: 'css-loader',
-					options: {
-						modules: {
-							localIdentName: '[name]__[local]',
-						},
-					},
-				},
-				{
-					loader: 'sass-loader',
-					options: {
-						implementation: require.resolve('sass'),
-						sassOptions: {
-							includePaths: [path.join(__dirname, '../src/')],
-						},
-					},
-				},
-			],
-			include: path.resolve(__dirname, '../src'),
-		});
-
-		return config;
 	},
 };

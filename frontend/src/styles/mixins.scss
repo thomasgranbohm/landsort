@@ -21,38 +21,32 @@
 	}
 }
 
-@mixin breakpoint-extra-small {
-	@media only screen and (max-width: 600px) {
+@mixin breakpoint-sm {
+	@media screen and (min-width: $breakpoint-sm) {
 		@content;
 	}
 }
 
-@mixin breakpoint-small {
-	@media only screen and (min-width: 600px) {
+@mixin breakpoint-md {
+	@media screen and (min-width: $breakpoint-md) {
 		@content;
 	}
 }
 
-@mixin breakpoint-medium {
-	@media only screen and (min-width: 768px) {
+@mixin breakpoint-lg {
+	@media screen and (min-width: $breakpoint-lg) {
 		@content;
 	}
 }
 
-@mixin breakpoint-large {
-	@media only screen and (min-width: 992px) {
+@mixin breakpoint-xl {
+	@media screen and (min-width: $breakpoint-xl) {
 		@content;
 	}
 }
 
-@mixin breakpoint-extra-large {
-	@media only screen and (min-width: 1200px) {
-		@content;
-	}
-}
-
-@mixin without-navigation {
-	@media (max-width: 1280px) {
+@mixin breakpoint($size) {
+	@media screen and (min-width: $size) {
 		@content;
 	}
 }
@@ -60,4 +54,25 @@
 @mixin apply-signature {
 	background-color: $signature;
 	color: white;
+}
+
+@mixin keep-within-width {
+	margin-right: auto;
+	margin-left: auto;
+
+	@include breakpoint-sm {
+		max-width: $breakpoint-sm;
+	}
+
+	@include breakpoint-md {
+		max-width: $breakpoint-md;
+	}
+
+	@include breakpoint-lg {
+		max-width: $breakpoint-lg;
+	}
+
+	@include breakpoint-xl {
+		max-width: $breakpoint-xl;
+	}
 }

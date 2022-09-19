@@ -9,15 +9,21 @@
 
 :root {
 	--max-width: #{$max-width};
-	--gutter: #{$gutter-width};
+	--gutter: #{$gutter};
 
 	--foreground: #{$black};
 	--background: #{$white};
 	--link: #{$blue};
 	--signature: #{$orange};
 
-	--alt: #{$silver};
+	--alt: #{$gainsboro};
 	--green: #{$russian-green};
+
+	@each $name, $size in $breakpoints {
+		@include breakpoint($size) {
+			--max-width: #{$size};
+		}
+	}
 }
 
 :root,
@@ -27,6 +33,7 @@ body {
 		Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
 		sans-serif;
 	font-size: 16px;
+	line-height: 1.5;
 }
 
 section {

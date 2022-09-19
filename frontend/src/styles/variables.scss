@@ -1,5 +1,16 @@
-$max-width: 82ch;
-$gutter-width: 1rem;
+$breakpoint-sm: 540px;
+$breakpoint-md: 720px;
+$breakpoint-lg: 960px;
+$breakpoint-xl: 1280px;
 
-$page-width: var(--max-width);
-$gutter: var(--gutter);
+$breakpoints: (
+	'sm': $breakpoint-sm,
+	'md': $breakpoint-md,
+	'lg': $breakpoint-lg,
+	'xl': $breakpoint-xl,
+);
+
+$max-width: $breakpoint-sm;
+
+$gutter: 1rem;
+$double-gutter: calc(2 * #{$gutter});
