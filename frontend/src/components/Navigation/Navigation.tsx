@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import { FocusScope, useButton, usePreventScroll } from 'react-aria';
 
 import Anchor from 'components/Anchor/Anchor';
-import Column from 'components/Column/Column';
 import Image from 'components/Image/Image';
 
 import { getSlug, normalize } from 'utils/functions';
@@ -31,8 +30,7 @@ const Navigation = ({ logo, menus }: NavigationProps) => {
 	usePreventScroll({ isDisabled: !state.isOpen });
 
 	return (
-		<Column
-			size="full"
+		<div
 			className={clsx(
 				classes['container'],
 				state.isOpen && classes['open']
@@ -84,7 +82,7 @@ const Navigation = ({ logo, menus }: NavigationProps) => {
 					))}
 				</ul>
 			</FocusScope>
-		</Column>
+		</div>
 	);
 };
 

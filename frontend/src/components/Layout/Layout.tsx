@@ -1,7 +1,6 @@
 import { FC } from 'react';
 
 import Anchor from 'components/Anchor/Anchor';
-import Column from 'components/Column/Column';
 import Header from 'components/Header/Header';
 import Navigation from 'components/Navigation/Navigation';
 
@@ -21,11 +20,9 @@ const Layout: FC<LayoutProps> = ({ global, breadcrumbs, children, title }) => (
 		<Header breadcrumbs={breadcrumbs} title={title} home={global.home} />
 		<main>{children}</main>
 		<footer>
-			<Column size={12}>
-				<Anchor href="https://github.com/thomasgranbohm/landsort">
-					Source code
-				</Anchor>
-			</Column>
+			<Anchor href="https://github.com/thomasgranbohm/landsort">
+				Source code
+			</Anchor>
 		</footer>
 	</div>
 );

@@ -16,22 +16,20 @@ export interface HeaderProps {
 }
 
 const Header = ({ title, breadcrumbs, home }: HeaderProps) => (
-	<Row tag="header" className={classes['container']}>
-		<Column size={12}>
-			{home && breadcrumbs && breadcrumbs.length > 0 && (
-				<Breadcrumbs className={classes['breadcrumbs']} home={home}>
-					{breadcrumbs.map(({ slug, title }, i) => (
-						<BreadcrumbItem key={i} href={slug}>
-							{title}
-						</BreadcrumbItem>
-					))}
-				</Breadcrumbs>
-			)}
-			<Heading className={classes['title']} type="h1">
-				{title}
-			</Heading>
-		</Column>
-	</Row>
+	<header className={classes['container']}>
+		{home && breadcrumbs && breadcrumbs.length > 0 && (
+			<Breadcrumbs className={classes['breadcrumbs']} home={home}>
+				{breadcrumbs.map(({ slug, title }, i) => (
+					<BreadcrumbItem key={i} href={slug}>
+						{title}
+					</BreadcrumbItem>
+				))}
+			</Breadcrumbs>
+		)}
+		<Heading className={classes['title']} type="h1">
+			{title}
+		</Heading>
+	</header>
 );
 
 export default Header;
