@@ -9,4 +9,13 @@ export const parameters = {
 			date: /Date$/,
 		},
 	},
+	backgrounds: {
+		grid: {
+			cellSize: 128,
+			opacity: 0.5,
+			cellAmount: 1,
+			offsetX: 16,
+			offsetY: 16,
+		},
+	},
 };
