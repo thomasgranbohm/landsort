@@ -1,11 +1,11 @@
 /* eslint-disable react/no-children-prop */
 import ReactMarkdown from 'react-markdown';
 
-import Anchor from 'components/Anchor/Anchor';
-import Heading from 'components/Heading/Heading';
-import List from 'components/List/List';
-import ListItem from 'components/ListItem/ListItem';
-import Paragraph from 'components/Paragraph/Paragraph';
+import Anchor from 'components/Anchor';
+import Heading from 'components/Heading';
+import List from 'components/List';
+import ListItem from 'components/ListItem';
+import Paragraph from 'components/Paragraph';
 
 interface HTMLRendererProps {
 	html: string;

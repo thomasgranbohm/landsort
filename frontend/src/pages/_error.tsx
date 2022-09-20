@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 
-import Heading from 'components/Heading/Heading';
-import Layout from 'components/Layout/Layout';
+import Heading from 'components/Heading';
+import Layout from 'components/Layout';
 
 import Globals from 'queries/Globals.gql';
 

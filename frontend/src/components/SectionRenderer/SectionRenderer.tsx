@@ -1,8 +1,6 @@
-import HTMLRenderer from 'components/HTMLRenderer/HTMLRenderer';
-import ImageWithCaption from 'components/ImageWithCaption/ImageWithCaption';
-import Paragraph from 'components/Paragraph/Paragraph';
-import Quote from 'components/Quote/Quote';
-import Row from 'components/Row/Row';
+import HTMLRenderer from 'components/HTMLRenderer';
+import ImageWithCaption from 'components/ImageWithCaption';
+import Quote from 'components/Quote';
 
 import { Fragments } from 'utils/types';
 

@@ -10,7 +10,7 @@ import {
 } from 'react';
 import { useBreadcrumbItem } from 'react-aria';
 
-import Anchor, { AnchorProps } from 'components/Anchor/Anchor';
+import Anchor, { AnchorProps } from 'components/Anchor';
 
 import classes from './Breadcrumbs.module.scss';
 

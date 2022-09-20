@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
 
-import Column from 'components/Column/Column';
-import Row from 'components/Row/Row';
+import Column from 'components/Column';
+import Row from 'components/Row';
 
 import { WithChildren } from 'utils/types';
 

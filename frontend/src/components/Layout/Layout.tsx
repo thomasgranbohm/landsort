@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import Anchor from 'components/Anchor/Anchor';
-import Header from 'components/Header/Header';
-import Navigation from 'components/Navigation/Navigation';
+import Anchor from 'components/Anchor';
+import Header from 'components/Header';
+import Navigation from 'components/Navigation';
 
 import { Breadcrumb, Fragments, WithChildren } from 'utils/types';
 

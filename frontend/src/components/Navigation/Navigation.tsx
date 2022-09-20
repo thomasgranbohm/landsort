@@ -3,8 +3,9 @@ import clsx from 'clsx';
 import { useRef } from 'react';
 import { FocusScope, useButton, usePreventScroll } from 'react-aria';
 
-import Anchor from 'components/Anchor/Anchor';
-import Image from 'components/Image/Image';
+import Anchor from 'components/Anchor';
+import Icon from 'components/Icon';
+import Image from 'components/Image';
 
 import { getSlug, normalize } from 'utils/functions';
 import { Fragments, Strapi } from 'utils/types';
@@ -51,14 +52,14 @@ const Navigation = ({ logo, menus }: NavigationProps) => {
 					ref={buttonRef}
 					className={classes['hamburger']}
 				>
-					hamburger
+					<Icon type={state.isOpen ? 'close' : 'menu'} />
 				</button>
 				<ul className={clsx(classes['menu'])}>
 					{menus.map(({ pages, title }, i) => (
 						<li className={classes['item']} key={i}>
 							<p className={classes['title']} tabIndex={0}>
 								<b>{title}</b>
-								<span className={classes['icon']}>&gt;</span>
+								<Icon type="arrow_drop_down" />
 							</p>
 							<ul className={classes['sub-menu']}>
 								{normalize<Fragments.MenuItem[]>(pages).map(

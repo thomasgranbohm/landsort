@@ -1,6 +1,6 @@
-import Column from 'components/Column/Column';
-import Image from 'components/Image/Image';
-import Row from 'components/Row/Row';
+import Column from 'components/Column';
+import Image from 'components/Image';
+import Row from 'components/Row';
 
 import { normalize } from 'utils/functions';
 import { Fragments, Strapi } from 'utils/types';

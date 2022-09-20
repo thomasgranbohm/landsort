@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 
-import Layout from 'components/Layout/Layout';
-import SectionRenderer from 'components/SectionRenderer/SectionRenderer';
+import Layout from 'components/Layout';
+import SectionRenderer from 'components/SectionRenderer';
 
 import StartPageQuery from 'queries/Startpage.gql';
 

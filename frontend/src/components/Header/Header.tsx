@@ -1,9 +1,5 @@
-import Breadcrumbs, {
-	BreadcrumbItem,
-} from 'components/Breadcrumbs/Breadcrumbs';
-import Column from 'components/Column/Column';
-import Heading from 'components/Heading/Heading';
-import Row from 'components/Row/Row';
+import Breadcrumbs, { BreadcrumbItem } from 'components/Breadcrumbs';
+import Heading from 'components/Heading';
 
 import { Breadcrumb } from 'utils/types';
 
