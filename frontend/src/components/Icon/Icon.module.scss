@@ -1,0 +1,23 @@
+.container {
+	width: 1em;
+	height: 1em;
+
+	--multiplier: 1;
+	font-size: calc(2em * var(--multiplier));
+
+	&.size-1x {
+		--multiplier: 1;
+	}
+
+	&.size-2x {
+		--multiplier: 2;
+	}
+
+	&.size-3x {
+		--multiplier: 3;
+	}
+
+	&.size-4x {
+		--multiplier: 4;
+	}
+}
