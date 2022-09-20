@@ -34,7 +34,7 @@
 		display: none;
 		width: 100%;
 
-		padding-top: 12rem;
+		padding-top: 2rem;
 
 		list-style: none;
 
@@ -44,13 +44,6 @@
 				display: block;
 				height: 100%;
 				line-height: 3rem;
-
-				.icon {
-					width: 3rem;
-					height: 3rem;
-
-					text-align: center;
-				}
 			}
 
 			.sub-menu {
@@ -63,6 +56,9 @@
 					white-space: nowrap;
 					overflow: hidden;
 					text-overflow: ellipsis;
+
+					padding-left: $half-gutter;
+					box-sizing: content;
 				}
 			}
 
@@ -70,6 +66,11 @@
 			&:hover {
 				.sub-menu {
 					display: block;
+
+					.item:hover {
+						padding-left: calc(0.75 * #{$half-gutter});
+						border-left: solid 2px $orange;
+					}
 				}
 			}
 		}
@@ -80,11 +81,6 @@
 				justify-content: space-between;
 				align-items: center;
 			}
-
-			&:focus-within .title .icon,
-			&:hover .title .icon {
-				transform: rotate(90deg);
-			}
 		}
 	}
 
@@ -92,6 +88,12 @@
 		grid-area: hamburger;
 		justify-self: end;
 		align-self: center;
+		height: 4rem;
+		width: 4rem;
+		appearance: none;
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
 	}
 
 	&.open {
@@ -109,7 +111,7 @@
 		}
 	}
 
-	@include breakpoint-lg {
+	@include breakpoint-md {
 		--height: 3rem;
 		display: block;
 

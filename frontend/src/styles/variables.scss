@@ -14,3 +14,4 @@ $max-width: $breakpoint-sm;
 
 $gutter: 1rem;
 $double-gutter: calc(2 * #{$gutter});
+$half-gutter: calc(0.5 * #{$gutter});
